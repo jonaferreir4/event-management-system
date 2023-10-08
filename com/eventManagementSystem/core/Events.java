@@ -7,7 +7,9 @@ public class Events {
 	private String description;
 	private String address;
 	private String theme;
-	private DatasEhorario dataEhorario;
+	private Date dateEvent;
+	private Time timeEvent;
+
 	
 	public Events(String Eventname,String type, String category, String description, String address,String theme ) {
 		 this.Eventname = Eventname;
