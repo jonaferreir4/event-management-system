@@ -1,5 +1,8 @@
 package com.eventManagementSystem.core;
 
+import java.util.ArrayList;
+
+
 public class Events {
 	private String Eventname;
 	private String type;
@@ -8,7 +11,8 @@ public class Events {
 	private String address;
 	private String theme;
 	private Date dateEvent;
-	private Time timeEvent;
+	private Time timeEvent;	
+	private ArrayList<Activity> activities;
 
 	
 	public Events(String Eventname,String type, String category, String description, String address,String theme ) {
@@ -18,6 +22,7 @@ public class Events {
 		 this.description = description;
 		 this.address = address;
 		 this.theme = theme;
+		 this.activities = new ArrayList<Activity>();
 	}
 	
 }
