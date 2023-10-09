@@ -13,12 +13,13 @@ public class Events {
 	private String description;
 	private String address;
 	private String theme;
-	private Date dateEvent;
+	private Date dateStartEvent;
+	private Date dateEndEvent;
 	private Time timeEvent;	
 	private ArrayList<Activity> activities;
 
 	
-	public Events(String Eventname,String type, String category, String description, String address,String theme ) {
+	public Events(String Eventname,String type, String category, String description, String address, String theme ) {
 		 this.Eventname = Eventname;
 		 this.type = type;
 		 this.category = category;
