@@ -1,6 +1,9 @@
-package com.eventManagementSystem.core;
+package core.Model;
 
 import java.util.ArrayList;
+
+import core.Utils.Date;
+import core.Utils.Time;
 
 
 public class Events {

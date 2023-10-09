@@ -1,4 +1,4 @@
-package com.eventManagementSystem.core;
+package core.Model;
 
 public class Participant  extends Users{
 	

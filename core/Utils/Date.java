@@ -1,4 +1,4 @@
-package com.eventManagementSystem.core;
+package core.Utils;
 
 public class Date {
     private int day;
@@ -13,6 +13,18 @@ public class Date {
         } else {
             throw new IllegalArgumentException("Data inválida.");
         }
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+    
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public int getDay() {

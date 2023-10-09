@@ -1,4 +1,7 @@
-package com.eventManagementSystem.core;
+package core.Model;
+
+import core.Utils.Date;
+import core.Utils.Time;
 
 public class Activity {
 	

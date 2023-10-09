@@ -1,4 +1,6 @@
-package com.eventManagementSystem.core;
+package core.Model;
+
+import core.Utils.Date;
 
 public class Users {
 	private String name;

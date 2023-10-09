@@ -1,4 +1,4 @@
-package com.eventManagementSystem.core;
+package core.Utils;
 
 public class Time {
 	private int hours;
