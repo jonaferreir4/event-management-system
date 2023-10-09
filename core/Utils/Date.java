@@ -1,4 +1,4 @@
-package com.eventManagementSystem.core;
+package core.Utils;
 
 public class Date {
     private int day;
@@ -15,6 +15,18 @@ public class Date {
         }
     }
 
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+    
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public int getDay() {
         return day;
     }
@@ -28,7 +40,12 @@ public class Date {
     }
 
     public boolean isValidDate(int day, int month, int year) {
-        if (year < 1 || month < 1 || month > 12 || day < 1 || day > 31) {
+        if (year < 1000 || year > 9999 || month < 1 || month > 12 || day < 1 || day > 31) {
+            return false;
+        }
+
+        String dateStr = String.format("%02d/%02d/%04d", day, month, year);
+        if (!dateStr.matches("\\d{2}/\\d{2}/\\d{4}")) {
             return false;
         }
 
