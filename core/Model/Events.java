@@ -1,6 +1,6 @@
 package core.Model;
 
-import java.util.ArrayList;
+import java.util.ArrayList;	
 
 import core.Utils.Date;
 import core.Utils.Time;

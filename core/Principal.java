@@ -3,7 +3,7 @@ package core;
 
 import core.View.Menu;
 
-public class Main {
+public class Principal {
     public static void main(String[] args) {
         try {
 
