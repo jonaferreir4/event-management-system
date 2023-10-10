@@ -120,6 +120,7 @@ public class Menu {
                 System.out.println("Entrada inválida. Digite um número válido.");
             }
         }
+        }
 =======
     public void EventMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -153,3 +154,5 @@ public class Menu {
     }
     
 }
+
+
