@@ -28,15 +28,12 @@ public class Menu {
 
                 switch (choice) {
                     case 1:
-<<<<<<< HEAD
                         menuCadastroUsuario();
-=======
                     	 ;
                         EventMenu(); 
                         break;
                     case 2:
                         // Implemente a lógica para se inscrever em um evento aqui
->>>>>>> 0fddab0f7d7d9ea3f93bb1a3ef04a15d55ccaa33
                         break;
                     // case 2:
                     //     menuEventos();
@@ -67,7 +64,6 @@ public class Menu {
         }
     }
 
-<<<<<<< HEAD
     private void menuCadastroUsuario() {
     }
 
@@ -121,7 +117,7 @@ public class Menu {
             }
         }
         }
-=======
+
     public void EventMenu() {
         Scanner scanner = new Scanner(System.in);
         
@@ -146,7 +142,6 @@ public class Menu {
         EventManager em  = new EventManager();
         em.addEvent(E);
         
->>>>>>> 0fddab0f7d7d9ea3f93bb1a3ef04a15d55ccaa33
     }
     
     public void searchEvent(String name) {

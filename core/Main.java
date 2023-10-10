@@ -3,7 +3,7 @@ package core;
 import core.Controller.Controller;
 import core.View.Menu;
 
-public class Principal {
+public class Main {
     public static void main(String[] args) {
         try {
             Menu menu = new Menu();
