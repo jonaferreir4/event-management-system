@@ -18,7 +18,7 @@ public class Menu {
             System.out.println("3 - Palestrantes");
             System.out.println("4 - Certificados");
             System.out.println("5 - Avaliações e Feedbacks");
-            System.out.println("6 - QR Code");
+            System.out.println("6 - QR Code");	
             System.out.println("7 - Sair");
 
             String input = scanner.nextLine();
@@ -29,8 +29,6 @@ public class Menu {
                 switch (choice) {
                     case 1:
                         menuCadastroUsuario();
-                    	 ;
-                        EventMenu(); 
                         break;
                     case 2:
                         // Implemente a lógica para se inscrever em um evento aqui
