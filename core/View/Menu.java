@@ -63,6 +63,7 @@ public class Menu {
     }
 
     private void menuCadastroUsuario() {
+    	
     }
 
     private void menuEventos() {
