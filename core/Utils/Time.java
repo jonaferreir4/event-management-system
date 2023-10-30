@@ -29,6 +29,7 @@ public class Time {
         return minutes;
     }
 
+    // Verificar se o horário é válida
 	public boolean isValidateTime(int hours, int minutes){
 		if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 ) {
             return false;
@@ -41,6 +42,7 @@ public class Time {
 		return true;
 	}
 
+	// converter o horário para String
 	@Override
     public String toString() {
         return String.format("%02d:%02d", hours, minutes);

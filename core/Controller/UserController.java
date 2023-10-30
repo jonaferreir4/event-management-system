@@ -6,46 +6,41 @@ import core.Model.*;
 import core.Utils.Date;
 
 public class UserController {
-	private UserManager userManager;
+	 private ArrayList<Users> userList; // L
 
-	public UserController(UserManager userManager) {
-		this.userManager = userManager;
+	public UserController() {
+		 userList = new ArrayList<Users>(); // Inicialize a lista de usuários, se necessário
 		
 	}
-	
+	/// Esse método vai criar os usuários e adicionar ao arrayList na classe userManager
     public void registrationUser(String name, String email, String password, Date dateOfBirth) {
     	Users newUser = new Users(name, email, password,dateOfBirth );
-        userManager.addUser(newUser);   
+        userList.add(newUser);   
         }   
     
-    
-    public void searchUser(String name) {
-    	UserManager foundUser = userManager;
-
-   	    if (foundUser != null) {
-   	    	// mandar evento para a view
-   	    } else {
-   	       // mandar mensagem de nao encontrado para a view
-   	   
-   	    }
-   }
-
-   public void listUsers() {
-   	 ArrayList<Users> users = userManager.getAllUsers();
-
-   	    if (!users.isEmpty()) {
-   	        // Exiba a lista de usuarios
-   	    } else {
-   	       //Nenhum usuario disponível no momento.
-   	    }
-   }
+   // Esse método queando terminado servirá para pesquisar usuários pelo nome 
+    public Users searchUser(String name) {
+    	for (Users user : userList) {
+            if (user.getName().equals(name)) {
+                return user;
+            }
+        }
+        return null; // Retorna null se o evento não for encontrado
+    }    
    
+   
+ //Esse método servirá para listar os usuários
+   public ArrayList<Users>  listUsers() {
+   	 return userList;
+   }
+  // Esse servirá pra atualizar dados usuário
    public void upDateUser(String nome, String password) {
-   	// atualizar evento
+   	// atualizar usuário
    }
    
+   // Esse servirá para deletar usuários
    public void deleteEvent(String nome,String email ,String password) {
-   	// deletar evento 
+   	// deletar usuário 
    }
    
 }
