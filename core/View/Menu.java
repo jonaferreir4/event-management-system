@@ -138,8 +138,6 @@ public class Menu {
         System.out.println("Evento criado com sucesso: " + eventName);
         
         Events E = new Events(eventName, type, category, description, address, theme);
-        EventManager em  = new EventManager();
-        em.addEvent(E);
         
     }
     

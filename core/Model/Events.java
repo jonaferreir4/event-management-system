@@ -15,7 +15,10 @@ public class Events {
 	private String theme;
 	private Date dateStartEvent;
 	private Date dateEndEvent;
-	private Time timeEvent;	
+	private Time timeEvent;
+
+
+	private ArrayList<Participant> participants; 
 	private ArrayList<Activity> activities;
 
 	
@@ -26,7 +29,27 @@ public class Events {
 		 this.description = description;
 		 this.address = address;
 		 this.theme = theme;
+		 this.participants = new ArrayList<Participant>();
 		 this.activities = new ArrayList<Activity>();
+	}
+	
+	
+	 public void addParticipant(Participant participant) {
+	        participants.add(participant);
+	    }
+
+	    public void removeParticipant(Participant participant) {
+	        participants.remove(participant);
+	    }
+
+	    public ArrayList<Participant> getParticipants() {
+	        return participants;
+	    }
+	
+	
+	
+	public void setParticipants(ArrayList<Participant> participants) {
+		this.participants = participants;
 	}
 	
 	public void setEventName(String name){
@@ -122,11 +145,10 @@ public class Events {
 		return dateStartEvent;
 	}
 	
-	public Date getDateEndtEvent(){
+	public Date getDateEndEvent() {
 		return dateEndEvent;
 	}
-
-	
+		
 	public Time getTimeEvent(){
 		return timeEvent;
 	}

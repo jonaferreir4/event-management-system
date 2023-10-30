@@ -2,9 +2,8 @@ package core.Controller;
 
 import java.util.ArrayList;
 import core.Model.Users;
-import core.Model.EventManager;
-import java.util.ArrayList;
 import core.Model.Events;
+import core.Model.Participant;
 
 
 public class EventController {
@@ -52,6 +51,14 @@ public class EventController {
     // Esse servirá para deletar eventos
     public void deleteEvent(String nome, String tipo) {
     	// deletar evento 
+    }
+    
+    
+    public void registerParticipantForEvent(String eventName, Participant participant) {
+        Events event = searchEvent(eventName);
+        if (event != null) {
+            event.addParticipant(participant);
+        }
     }
     
     
