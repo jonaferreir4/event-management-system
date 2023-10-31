@@ -8,8 +8,8 @@ public class Participant  extends Users{
 	private ArrayList<String> registeredEvents;
 	private ArrayList<String> registeredActivities;
 	
-	public Participant() {
-		super();
+	public Participant(String name, String email, String password, Date dateOfBirth) {
+		super(name, email, email, dateOfBirth, "Participant");
 	}
 	
 	

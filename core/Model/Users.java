@@ -8,16 +8,23 @@ public class Users {
 	private String password;
 	private Date dateOfBirth;
 	
-	public Users(String name, String email, String password, Date dateOfBirth) {
+	 protected String role = "User";
+	
+	public Users(String name, String email, String password, Date dateOfBirth,  String role) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.dateOfBirth = dateOfBirth;
+		 this.role = role;
 	}
 	
 	public Users() {
 		
 	}
+	
+	 public String getRole() {
+	        return role;
+	    }
 
 	public void setName(String name){
 		if (name != null) {
