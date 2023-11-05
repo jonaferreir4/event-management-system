@@ -1,12 +1,11 @@
 package core.Controller;
 
-import core.Model.Activity;
-import core.Model.Events;
+import core.Model.*;
+
+
 
 public class ParticipantController {
 	
-	public void registerForEvent(Events event) {
-		
 	}
 	 
-}
+

@@ -1,6 +1,7 @@
 package core.View;
 
 import core.Model.*;
+import core.Utils.*;
 import java.util.Scanner;
 
 public class Menu {
@@ -63,6 +64,24 @@ public class Menu {
     }
 
     private void menuCadastroUsuario() {
+    	 String name;
+    	 String email;
+    	 String password;
+    	 Date dateOfBirth;
+    	 
+    	 System.out.println("Cadastro de Usuário:");
+         System.out.print("Nome: ");
+         name = scanner.nextLine();
+
+         System.out.print("Email: ");
+         email = scanner.nextLine();
+
+         System.out.print("Senha: ");
+         password = scanner.nextLine();
+
+         System.out.print("Data de Nascimento (DD/MM/AAAA): ");
+         String dateOfBirthStr = scanner.nextLine();
+    	
     	
     }
 
@@ -137,7 +156,6 @@ public class Menu {
         
         System.out.println("Evento criado com sucesso: " + eventName);
         
-        Events E = new Events(eventName, type, category, description, address, theme);
         
     }
     

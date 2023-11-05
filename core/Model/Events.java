@@ -7,7 +7,8 @@ import core.Utils.Time;
 
 
 public class Events {
-	private String EventName;
+	private String eventID; 
+	private String eventName;
 	private String type;
 	private String category;
 	private String description;
@@ -21,17 +22,22 @@ public class Events {
 	private ArrayList<Participant> participants; 
 	private ArrayList<Activity> activities;
 
-	
-	public Events(String Eventname,String type, String category, String description, String address, String theme ) {
-		 this.EventName = Eventname;
-		 this.type = type;
-		 this.category = category;
-		 this.description = description;
-		 this.address = address;
-		 this.theme = theme;
-		 this.participants = new ArrayList<Participant>();
-		 this.activities = new ArrayList<Activity>();
+	public Events() {
+		
 	}
+	
+	public Events(String eventID,String eventname,String type, String category, String description, String address, String theme ) {
+		this.eventID = eventID; 
+		this.eventName = eventname;
+		this.type = type;
+		this.category = category;
+		this.description = description;
+		this.address = address;
+		this.theme = theme;
+		this.participants = new ArrayList<Participant>();
+		this.activities = new ArrayList<Activity>();
+	}
+	
 	
 	
 	 public void addParticipant(Participant participant) {
@@ -45,8 +51,32 @@ public class Events {
 	    public ArrayList<Participant> getParticipants() {
 	        return participants;
 	    }
-	
-	
+	    
+	    public void addActivity(Activity activity) {
+	        activities.add(activity);
+	    }
+	    
+	    public Activity getActivity(String activityID){
+	    	if (activityID != null) {
+	    		for(Activity activity : activities) {
+	    			if(activity != null) {
+	    				return activity;
+	    			}
+	    			
+	    		}
+	    	
+	    	}
+	    	return null;
+	    }
+
+	    public void removeActivity(Activity activity) {
+	        activities.remove(activity);
+	    }
+
+	    public ArrayList<Activity> getActivities() {
+	        return activities;
+	    }
+	    
 	
 	public void setParticipants(ArrayList<Participant> participants) {
 		this.participants = participants;
@@ -54,7 +84,7 @@ public class Events {
 	
 	public void setEventName(String name){
 		if (name != null) {
-			this.EventName = name;
+			this.eventName = name;
 		}
 	}
 
@@ -87,12 +117,7 @@ public class Events {
 			this.theme = theme;			
 		}
 	}
-	
-	public void setActivities(ArrayList<Activity> activity){
-		if (activity != null) {
-			this.activities = activity;			
-		}
-	}
+
 	
 	public void setDateStartEvent(Date dateStartEvent){
 		if (dateStartEvent != null) {
@@ -114,7 +139,7 @@ public class Events {
 	
 
 	public String getEventName(){
-		return EventName;
+		return eventName;
 	}
 
 	public String getType(){
@@ -137,10 +162,6 @@ public class Events {
 		return theme;
 	}
 	
-	public ArrayList<Activity> getActivities(){
-		return activities;
-	}
-	
 	public Date getDateStartEvent(){
 		return dateStartEvent;
 	}
@@ -152,4 +173,9 @@ public class Events {
 	public Time getTimeEvent(){
 		return timeEvent;
 	}
+	
+  @Override
+    public String toString() {
+        return "Evento{" + "eventID=" + eventID + ", eventName=" + eventName + ", type=" + type + ", category=" + category + ", description=" + description + ", address=" + address + ", theme=" + theme + ", dateStartEvent=" + dateStartEvent + ", dateEndEvent=" + dateEndEvent + ", timeEvent="+ timeEvent + '}';
+    }
 }

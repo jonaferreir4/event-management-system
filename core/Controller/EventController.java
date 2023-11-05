@@ -5,90 +5,79 @@ import core.Model.Users;
 import core.Utils.Date;
 import core.Utils.Time;
 import core.Model.Events;
+import core.Model.Nivel;
 import core.Model.Participant;
 
-
 public class EventController {
-	  private ArrayList<Events> eventsList; // Lista de eventos
-	  
+    private ArrayList<Events> eventsList;
+    private Users user;
 
-	   public EventController() {
-	        eventsList = new ArrayList<Events>();
-	       
-	    }
-	   
-		   private boolean hasOrganizerPermission(Users user) {
-		        return "Organizer".equals(user.getRole());
-		    }
-		   
-		   private boolean hasParticipantPermission(Users user) {
-		        return "Participante".equals(user.getRole());
-		    }
-		   
-		   
-		/// Esse método vai criar os eventos e adicionar ao arrayList na classe EventManager
-	    public void createEvent(Users user, String Eventname,String type, String category, String description, String address, String theme) {
-	    	if (hasOrganizerPermission(user)) {
-	    		Events newEvent = new Events(Eventname, type, category, description, address, theme);
-	    		eventsList.add(newEvent);	
-	    		
-	    	}
-	         }
+    public EventController(Users user) {
+        this.user = user;
+        eventsList = new ArrayList<Events>();
+    }
     
-    // Esse método queando terminado servirá para pesquisar eventos pelo nome 
-    public Events searchEvent(String name) {
-    	 for (Events event : eventsList) {
-             if (event.getEventName().equals(name)) {
-                 return event;
-             }
-         }
-         return null; // Retorna null se o evento não for encontrado
-     }    
-    
+    private boolean hasUserPermission() {
+        return user.getNivel().equals(Nivel.USER) ||
+        user.getNivel().equals(Nivel.ORGANIZER) || 
+        user.getNivel().equals(Nivel.PARTICIPANT);
+    }
 
-    //Esse método servirá para listar os eventos
+    private boolean hasOrganizerPermission() {
+        return user.getNivel().equals(Nivel.ORGANIZER);
+    }
+
+    private boolean hasParticipantPermission() {
+        return user.getNivel().equals(Nivel.PARTICIPANT);
+    }
+    
+    public void createEvent(String eventID, String Eventname, String type, String category, String description, String address, String theme) {
+        if (hasUserPermission()) {
+            Events newEvent = new Events(eventID,Eventname, type, category, description, address, theme);
+            System.out.println("Criado com sucesso!");
+            eventsList.add(newEvent);
+        } else {
+            System.out.println("Você não tem permissão para criar eventos.");
+        }
+    }
+
+    public Events searchEventByName(String name) {
+    	 if(hasUserPermission()){
+    		 for (Events event : eventsList) {
+    			 if (event.getEventName().equals(name)) {
+    				 return event;
+    			 }
+    		 }
+    	 }
+    	 return null; // Retorna null se o evento não for encontrado
+    }
+
     public ArrayList<Events> listEvents() {
-    		return eventsList;    		
-    	
+        return eventsList;
     }
-    
-    // Esse servirá pra atualizar dados do evento
-    public void updateEvent(String nome) {
 
-    	Events event = searchEvent(nome);
-        
-    	if (event != null) {
-        
-	    	String eventName = event.getEventName();
-	        String type = event.getType();
-	    	String category = event.getCategory();
-	    	String description = event.getDescription();
-	    	String address = event.getAddress();
-	    	String theme = event.getTheme();
-	    	Date dateStartEvent =  event.getDateStartEvent();
-	    	Date dateEndEvent = event.getDateEndEvent();
-	    	Time timeEvent = event.getTimeEvent();
-	    	
-    	// As infomações do evento devem ser mandadas para a interface para que o para que o organizador visualize e
-	    //  Altere as informações que desejar.
-        }
-    }
-    
-    // Esse servirá para deletar eventos
-    public void deleteEvent(String nome, String tipo) {
-    	// deletar evento 
-    }
-    
-    
-    public void registerParticipantForEvent(Users user, String eventName, Participant participant) {
-        Events event = searchEvent(eventName);
-        if (hasParticipantPermission(user)) {
-        	
+    public void updateEvent(String nome) {
+        if(hasOrganizerPermission()) {
+        	Events event = searchEventByName(nome);
         	if (event != null) {
-        		event.addParticipant(participant);
+        		// Implemente a lógica de atualização aqui
         	}
+        	
         }
     }
-    
-    
+
+    public void deleteEvent(String nome, String tipo) {
+    	if(hasOrganizerPermission()) {
+    		
+    	}
+    }
+
+    public void registerParticipantForEvent(Users user, String eventName, Participant participant) {
+    	if (hasUserPermission()) {
+    		Events event = searchEventByName(eventName);
+            	if (event != null) {
+                event.addParticipant(participant);
+            }
+        }
+    }
 }

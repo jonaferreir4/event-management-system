@@ -1,10 +1,11 @@
 package core.Model;
 
 import core.Utils.Date;
+import java.util.ArrayList;
 import core.Utils.Time;
 
 public class Activity {
-	
+	private String activityID;
 	private String ActivityName;
 	private String theme;
 	private String type;
@@ -14,31 +15,41 @@ public class Activity {
 	private Date dateActivity;
 	private Time timeActivity;
 	private Time duration;
+	private ArrayList<Participant> participants;
 	
-	public Activity(String ActivityName, String theme, String type, String description,
-	String Localization, String speaker,Date dateActivity,Time timeActivity,Time duration) {
-		this.ActivityName = ActivityName;
+	public Activity() {
+		participants = new ArrayList<Participant>();
+		
+	}
+	
+	
+	public Activity(String activityID, String activityName, String theme, String type, String description,
+			String localization, String speaker, Date dateActivity, Time timeActivity, Time duration) {
+		this.activityID = activityID;
+		ActivityName = activityName;
 		this.theme = theme;
 		this.type = type;
 		this.description = description;
-		this.Localization = Localization;
+		Localization = localization;
 		this.speaker = speaker;
 		this.dateActivity = dateActivity;
 		this.timeActivity = timeActivity;
 		this.duration = duration;
 	}
-	
-	 // Metods
-	
-	/* ... */
-	
-	
-	
-	// getters and setters
+
+
 	public String getActivityName(){
 		return this.ActivityName;
 	}
 	
+	public String getActivityID() {
+		return activityID;
+	}
+
+	public void setActivityID(String activityID) {
+		this.activityID = activityID;
+	}
+
 	public void setActivityName(String newName){
 		this.ActivityName = newName;
 	}
@@ -104,5 +115,16 @@ public class Activity {
 	public void setDuration(Time newDuration){
 		this.duration = newDuration;
 	}
+	
+	public void addParticipant(Participant participant) {
+		if(participant != null) {
+			participants.add(participant);
+		}
+	}
+	
+	@Override
+    public String toString() {
+        return "activity{" + "activityID=" + activityID + ", ActivityName=" + ActivityName + ", theme=" + theme  + ", type=" + type + ", description=" + description + ", Localization=" + Localization + ", speaker=" + speaker + ", dateActivity=" + dateActivity + ", timeActivity=" + timeActivity + ", duration="+ duration + '}';
+    }
 	
 }

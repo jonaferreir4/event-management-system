@@ -5,11 +5,13 @@ import core.Utils.Date;
 
 public class Participant  extends Users{
 	private String participantID;
+	private Nivel nivel;
 	private ArrayList<String> registeredEvents;
 	private ArrayList<String> registeredActivities;
 	
-	public Participant(String name, String email, String password, Date dateOfBirth) {
-		super(name, email, email, dateOfBirth, "Participant");
+	public Participant(String participantID, String name, String email, String password, String dateOfBirth) {
+		super(participantID, name, email, email, dateOfBirth);
+		this.nivel = Nivel.PARTICIPANT;
 	}
 	
 	
@@ -22,6 +24,18 @@ public class Participant  extends Users{
 			this.participantID = participantID;			
 		}
 	}
+	
+	
+
+	public Nivel getNivel() {
+		return nivel;
+	}
+
+
+	public void setNivel(Nivel nivel) {
+		this.nivel = nivel;
+	}
+
 
 	public ArrayList<String> getRegisteredEvents() {
 		return registeredEvents;

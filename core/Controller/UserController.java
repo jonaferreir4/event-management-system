@@ -12,9 +12,20 @@ public class UserController {
 		 userList = new ArrayList<Users>(); // Inicialize a lista de usuários, se necessário
 		
 	}
+	
+	public Users authenticateUser(String username, String password) {
+        for (Users user : userList) {
+            if (user.getName().equals(username) && user.getPassword().equals(password)) {
+                return user; // Retorna o usuário autenticado.
+            }
+        }
+        return null; // Retorna null se as credenciais estiverem incorretas ou o usuário não for encontrado.
+    }
+	
 	/// Esse método vai criar os usuários e adicionar ao arrayList na classe userManager
-    public void registrationUser(String name, String email, String password, Date dateOfBirth) {
-    	Users newUser = new Users(name, email, password,dateOfBirth );
+    public void registrationUser(String userID, String name, String email, String password, String dateOfBirth) {
+  
+    	Users newUser = new Users(userID, name, email, password,dateOfBirth);
         userList.add(newUser);   
         }   
     
