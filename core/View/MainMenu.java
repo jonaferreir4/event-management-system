@@ -2,7 +2,6 @@ package core.View;
 
 import core.Model.*;
 import core.Controller.*;
-import core.View.UserRegistrationMenu;
 
 import java.util.Scanner;
 
@@ -32,7 +31,9 @@ public class MainMenu {
                         menu.menuCadastroUsuario();
                         break;
                     case 2:
-                    	// implementar
+                    	LoginMenu loginMenu = new LoginMenu();
+                    	loginMenu.loginMenu();
+                    	
                     	break;
                     case 3:
                     	EventController events = new EventController();

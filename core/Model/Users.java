@@ -26,8 +26,6 @@ public class Users  implements State{
 	}
 	
 	
-	
-	
 	 public Nivel getNivel() {
 		return nivel;
 	}
