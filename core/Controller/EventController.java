@@ -12,6 +12,10 @@ public class EventController {
     private ArrayList<Events> eventsList;
     private Users user;
 
+    public EventController() {
+    	
+    }
+    
     public EventController(Users user) {
         this.user = user;
         eventsList = new ArrayList<Events>();
@@ -52,8 +56,12 @@ public class EventController {
     	 return null; // Retorna null se o evento não for encontrado
     }
 
-    public ArrayList<Events> listEvents() {
-        return eventsList;
+    public String listEvents() {
+    	 ArrayList<String> eventsAsStringList = new ArrayList<String>();
+    	    
+    	    String eventList = eventsList.toString();
+    	    
+    	    return eventList;
     }
 
     public void updateEvent(String nome) {

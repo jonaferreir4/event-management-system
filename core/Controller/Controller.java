@@ -1,11 +1,11 @@
 package core.Controller;
 
-import core.View.Menu;
+import core.View.MainMenu;
 
 public class Controller {
-    private Menu menu;
+    private MainMenu menu;
 
-    public Controller(Menu menu){
+    public Controller(MainMenu menu){
         this.menu = menu;
     }
 }

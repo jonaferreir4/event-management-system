@@ -1,12 +1,12 @@
 package core;
 
 import core.Controller.Controller;
-import core.View.Menu;
+import core.View.MainMenu;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            Menu menu = new Menu();
+            MainMenu menu = new MainMenu();
             
             Controller controller = new Controller(menu.MainMenu());
 
