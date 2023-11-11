@@ -2,15 +2,23 @@ package core.View;
 
 
 import core.Model.*;
-import core.Controller.EventController;
+import core.Controller.*;
 
 import java.util.Scanner;
 
 
 public class UserMenu {
-	
-	
+	private EventController eventController;
+	private UserController userController;
+	private Users user;
 	public UserMenu() {
+		
+	}
+	
+	public UserMenu(UserController userController, EventController eventController, Users user) {
+		this.userController = userController;
+		this.eventController = eventController;
+		this.user = user;
 		
 	}
 	
@@ -32,9 +40,9 @@ public class UserMenu {
 
 	                switch (choice) {
 	                    case 1:
-	                    	EventRegistrationMenu event = new EventRegistrationMenu();
-	                    	event.EventMenu();
-	                  
+	                    	 EventRegistrationMenu event = new EventRegistrationMenu(userController, eventController);
+	                         event.setLoggedInUser(user);
+	                         event.EventMenu();	                  
 	                      break;
 	                    // case 2:
 	                      //     inscreverNoEvento();
@@ -63,6 +71,11 @@ public class UserMenu {
 				  myEvent.addParticipant(participant);
 			  }
 		  }
+		  
+		  
+		  public void setUser(Users user) {
+			    this.user = user;
+			}
 		  
 		  
 	  }

@@ -23,10 +23,11 @@ public class UserController {
     }
 	
 	/// Esse método vai criar os usuários e adicionar ao arrayList na classe userManager
-    public void registrationUser(String userID, String name, String email, String password, String dateOfBirth) {
+    public Users registrationUser(String userID, String name, String email, String password, String dateOfBirth) {
   
     	Users newUser = new Users(userID, name, email, password,dateOfBirth);
-        userList.add(newUser);   
+        userList.add(newUser);  
+        return newUser;
         }   
     
    // Esse método queando terminado servirá para pesquisar usuários pelo nome 

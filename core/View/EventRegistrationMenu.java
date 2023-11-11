@@ -1,17 +1,32 @@
 package core.View;
 
+import core.Model.*;
 import java.util.Scanner;
 import core.Controller.*;
 
 public class EventRegistrationMenu {
+	private EventController eventController;
+	private UserController userController;
+	private Users loggedInUser;
 	
 	public EventRegistrationMenu() {
 		
 	}
+	
+	public EventRegistrationMenu(UserController userController ,EventController eventController) {
+		this.userController = userController;
+		this.eventController = eventController;
+	}
 
 	  public void EventMenu() {
 	        Scanner scanner = new Scanner(System.in);
-	        EventController event = new EventController();
+	        
+	        if (loggedInUser == null) {
+	            System.out.println("Usuário não logado. Não é possível criar eventos.");
+	            return;
+	        }
+	        
+	        eventController.setCurrentUser(loggedInUser);
 	        
 	        
 	        System.out.println("Insira os seguintes dados para criar um evento: \n");
@@ -30,10 +45,14 @@ public class EventRegistrationMenu {
 	        System.out.print("tema do evento: ");
 	        String theme = scanner.nextLine();
 	        
-	        event.createEvent(eventID, eventName, type, category, description, address, theme);
+	        eventController.createEvent(eventID, eventName, type, category, description, address, theme);
 	        
 	        System.out.println("Evento criado com sucesso: " + eventName);
 	        
 	        
 	    }
+	  
+	  public void setLoggedInUser(Users user) {
+		    this.loggedInUser = user;
+		}
 }

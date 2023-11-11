@@ -7,10 +7,17 @@ import core.View.*;
 import java.util.Scanner;
 
 public class LoginMenu {
-	
+	private UserController userController;
+	private UserMenu userMenu;
+    
 	public LoginMenu() {
 		
 	}
+	
+	 public LoginMenu(UserController userController, UserMenu userMenu) {
+	        this.userController = userController;	   
+	        this.userMenu = userMenu;
+	 }
 	
 	public void loginMenu() {
 		Scanner scanner = new Scanner(System.in);
@@ -22,24 +29,22 @@ public class LoginMenu {
 		login(name, password);
 	}
 	
-	
 	public void login(String name, String password) {	
-		
-		UserController user  = new UserController();
-		UserMenu menu = new UserMenu();
-		
-		if (name != null && password != null) {
-			Users logged = user.authenticateUser(name, password);
 			
-			if (logged != null) {
-				System.out.println("Bem vindo de volta, " + logged.getName());
-				System.out.println();
-				menu.userMenu();
-				
-			}else {
-				System.out.println("Usuário não encontrado! verique nome e senha.");
-			}
-		}
+		
+		
+		 if (name != null && password != null) {
+	            Users logged = userController.authenticateUser(name, password);
+
+	            if (logged != null) {
+	                System.out.println("Bem vindo de volta, " + logged.getName());
+	                System.out.println();
+	                userMenu.setUser(logged);
+	                userMenu.userMenu();
+	            } else {
+	                System.out.println("Usuário não encontrado! Verifique nome e senha.");
+	            }
+		 }
 	}
 	
 }

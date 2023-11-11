@@ -13,7 +13,8 @@ public class EventController {
     private Users user;
 
     public EventController() {
-    	
+        eventsList = new ArrayList<Events>();
+
     }
     
     public EventController(Users user) {
@@ -22,9 +23,9 @@ public class EventController {
     }
     
     private boolean hasUserPermission() {
-        return user.getNivel().equals(Nivel.USER) ||
-        user.getNivel().equals(Nivel.ORGANIZER) || 
-        user.getNivel().equals(Nivel.PARTICIPANT);
+        return	(user.getNivel() == Nivel.USER ||
+        user.getNivel() == Nivel.ORGANIZER || 
+        user.getNivel() == Nivel.PARTICIPANT);
     }
 
     private boolean hasOrganizerPermission() {
@@ -38,7 +39,6 @@ public class EventController {
     public void createEvent(String eventID, String Eventname, String type, String category, String description, String address, String theme) {
         if (hasUserPermission()) {
             Events newEvent = new Events(eventID,Eventname, type, category, description, address, theme);
-            System.out.println("Criado com sucesso!");
             eventsList.add(newEvent);
         } else {
             System.out.println("Você não tem permissão para criar eventos.");
@@ -58,10 +58,15 @@ public class EventController {
 
     public String listEvents() {
     	 ArrayList<String> eventsAsStringList = new ArrayList<String>();
+    	    if (eventsList != null) {
+    	    	String eventList = eventsList.toString();
+    	    	return eventList;
+    	    }else {
+    	    	return "Não há eventos Cadastrados";
+    	    }
     	    
-    	    String eventList = eventsList.toString();
     	    
-    	    return eventList;
+    	    
     }
 
     public void updateEvent(String nome) {
@@ -87,5 +92,9 @@ public class EventController {
                 event.addParticipant(participant);
             }
         }
+    }
+    
+    public void setCurrentUser(Users user) {
+        this.user = user;
     }
 }
