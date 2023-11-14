@@ -1,12 +1,10 @@
 package core.Controller;
 
 import java.util.ArrayList;
-import core.Model.Users;
+
 import core.Utils.Date;
 import core.Utils.Time;
-import core.Model.Events;
-import core.Model.Nivel;
-import core.Model.Participant;
+import core.Model.*;
 
 public class EventController {
     private ArrayList<Events> eventsList;
@@ -36,9 +34,12 @@ public class EventController {
         return user.getNivel().equals(Nivel.PARTICIPANT);
     }
     
-    public void createEvent(String eventID, String Eventname, String type, String category, String description, String address, String theme) {
+    public void createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
         if (hasUserPermission()) {
-            Events newEvent = new Events(eventID,Eventname, type, category, description, address, theme);
+            String organizerID = "ORG_" + eventID; 
+
+            Organizer owner = new Organizer(organizerID, creator.getName(), creator.getEmail(), creator.getPassword(), creator.getDateOfBirth()); 
+            Events newEvent = new Events(eventID, eventName, owner, creator, type, category, description, address, theme);
             eventsList.add(newEvent);
         } else {
             System.out.println("Você não tem permissão para criar eventos.");

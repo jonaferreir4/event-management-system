@@ -9,6 +9,8 @@ import core.Utils.Time;
 public class Events {
 	private String eventID; 
 	private String eventName;
+	private Organizer owner;
+	private Users creator;
 	private String type;
 	private String category;
 	private String description;
@@ -26,9 +28,11 @@ public class Events {
 		
 	}
 	
-	public Events(String eventID,String eventname,String type, String category, String description, String address, String theme ) {
+	public Events(String eventID,String eventname,Organizer owner,Users creator,String type, String category, String description, String address, String theme ) {
 		this.eventID = eventID; 
 		this.eventName = eventname;
+		this.owner = owner;
+		this.creator = creator;
 		this.type = type;
 		this.category = category;
 		this.description = description;
@@ -39,8 +43,32 @@ public class Events {
 	}
 	
 	
-	
-	 public void addParticipant(Participant participant) {
+		
+	 public String getEventID() {
+		return eventID;
+	}
+
+	public void setEventID(String eventID) {
+		if (eventID != null) {
+			this.eventID = eventID;			
+		}
+	}
+
+	public Organizer getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Organizer owner) {
+		if(owner != null) {
+			this.owner = owner;
+		}
+	}
+
+	public void setActivities(ArrayList<Activity> activities) {
+		this.activities = activities;
+	}
+
+	public void addParticipant(Participant participant) {
 	        participants.add(participant);
 	    }
 
