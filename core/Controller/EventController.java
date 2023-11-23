@@ -86,14 +86,12 @@ public class EventController {
     	}
     }
 
-    public void registerParticipantForEvent(Users user, String eventName, Participant participant) {
+    public void registerParticipantForEvent(Users user, Events event) {
     	if (hasUserPermission()) {
-    		Events event = searchEventByName(eventName);
-            	if (event != null) {
-                event.addParticipant(participant);
+   
+                event.addParticipant((Participant)user);
             }
         }
-    }
     
     public void setCurrentUser(Users user) {
         this.user = user;

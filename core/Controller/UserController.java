@@ -37,7 +37,7 @@ public class UserController {
                 return user;
             }
         }
-        return null; // Retorna null se o evento não for encontrado
+        return null; // Retorna null se o usuário não for encontrado
     }    
    
    
