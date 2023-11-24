@@ -24,7 +24,7 @@ public class UserSignUpMenu {
 		Events event = eventController.searchEventByName(eventName);
     	if (event != null) {
     		System.out.println("Nome: " + event.getEventName() +" - Endereço: " + event.getAddress() + " - Data e Horário: " 
-    	+ event.getDateStartEvent() + " a " + event.getDateEndEvent() + " as " + event.getTimeEvent());
+    	+ event.getDateStartEvent() + " a " + event.getDateEndEvent());
     	boolean state = true;
     	
     		 do{
@@ -40,7 +40,7 @@ public class UserSignUpMenu {
     		}while(state);
     		eventController.registerParticipantForEvent((Participant)user, event);
     		ParticipantMenu menu = new ParticipantMenu();
-    		menu.
+    		
     		
     	}
 		
