@@ -3,6 +3,7 @@ package core.View;
 import java.util.Scanner;
 import core.Model.*;
 import core.Controller.*;
+import core.View.*;
 
 public class UserSignUpMenu {
 	private Users user;
@@ -21,9 +22,26 @@ public class UserSignUpMenu {
 		System.out.println("Qual o nome do evento em que você deseja se increver?");
 		String eventName = scanner.nextLine();
 		Events event = eventController.searchEventByName(eventName);
-		
     	if (event != null) {
-    		eventController.registerParticipantForEvent(user, event);
+    		System.out.println("Nome: " + event.getEventName() +" - Endereço: " + event.getAddress() + " - Data e Horário: " 
+    	+ event.getDateStartEvent() + " a " + event.getDateEndEvent() + " as " + event.getTimeEvent());
+    	boolean state = true;
+    	
+    		 do{
+    			 
+    			System.out.println("Esse é o evento certo?");
+    			System.out.println("1 - Sim");
+    			System.out.println("2 - Não");
+    			int op = scanner.nextInt();
+    			
+    			if (op == 1 || op == 2) {
+    				state = false;
+    			}
+    		}while(state);
+    		eventController.registerParticipantForEvent((Participant)user, event);
+    		ParticipantMenu menu = new ParticipantMenu();
+    		menu.
+    		
     	}
 		
 		

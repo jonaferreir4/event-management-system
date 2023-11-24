@@ -1,9 +1,10 @@
 package core.Model;
 
 import java.util.ArrayList;	
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import core.Utils.Date;
-import core.Utils.Time;
+
 
 
 public class Events {
@@ -16,9 +17,8 @@ public class Events {
 	private String description;
 	private String address;
 	private String theme;
-	private Date dateStartEvent;
-	private Date dateEndEvent;
-	private Time timeEvent;
+	private LocalDateTime dateStartEvent;
+	private LocalDateTime dateEndEvent;
 
 
 	private ArrayList<Participant> participants; 
@@ -147,22 +147,20 @@ public class Events {
 	}
 
 	
-	public void setDateStartEvent(Date dateStartEvent){
-		if (dateStartEvent != null) {
+	public void setDateStartEvent(String dateStartEventStr){
+		if (dateEndEvent != null) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	        LocalDateTime dateStartEvent = LocalDateTime.parse(dateStartEventStr, formatter);
 		this.dateStartEvent = dateStartEvent;
 		}
 	}
 	
-	public void setDateEndEvent(Date dateEndEvent){
+	public void setDateEndEvent(String dateEndEventStr){
 		if (dateEndEvent != null) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	        LocalDateTime dateEndEvent = LocalDateTime.parse(dateEndEventStr, formatter);
 		this.dateEndEvent = dateEndEvent;
 		}
-	}
-	
-	public void setTimeEvent(Time timeEvent){
-		if (timeEvent != null) {
-		this.timeEvent = timeEvent;
-	}
 	}
 	
 
