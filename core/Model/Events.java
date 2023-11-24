@@ -188,17 +188,14 @@ public class Events {
 		return theme;
 	}
 	
-	public Date getDateStartEvent(){
+	public LocalDateTime getDateStartEvent(){
 		return dateStartEvent;
 	}
 	
-	public Date getDateEndEvent() {
+	public LocalDateTime getDateEndEvent() {
 		return dateEndEvent;
 	}
-		
-	public Time getTimeEvent(){
-		return timeEvent;
-	}
+
 	
   @Override
     public String toString() {
