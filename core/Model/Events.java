@@ -84,16 +84,13 @@ public class Events {
 	        activities.add(activity);
 	    }
 	    
-	    public Activity getActivity(String activityID){
-	    	if (activityID != null) {
-	    		for(Activity activity : activities) {
-	    			if(activity != null) {
-	    				return activity;
-	    			}
-	    			
-	    		}
-	    	
+	    public Activity getActivity(String activityName){
+	    	for (Activity activity : activities) {
+	    	    if (activity != null && activityName.equals(activity.getActivityName())) {
+	    	        return activity;
+	    	    }
 	    	}
+	    	
 	    	return null;
 	    }
 

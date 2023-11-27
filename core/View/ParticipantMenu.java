@@ -26,27 +26,37 @@ public class ParticipantMenu {
 			state = false;
 		switch (op) {
 			case 1:
+				listActivities();
 				break;
-				
 			case 2:
-				
+				participantRegistrationActivity();
 				break;
 			case 0:
 				break;
 			default:
 				System.out.println("opção inválida! tente novamente");
 				state = true;
+				break;
 		}
 		
 		
 		}while(state);
 	}
 	
-	public void ParticipantRegistrationActivity() {
 	
+	public void listActivities() {
+		
+		if(event.getActivities() != null) {
+			for (Activity activity: event.getActivities()) {
+				System.out.println(activity.toString());
+			}			
+		}else {
+			System.out.println("Nenhuma atividade cadastrada!");
+		}
 	}
+	public void participantRegistrationActivity() {
+		event.addParticipant(user);
+	}
+
 }
-
-
-
 

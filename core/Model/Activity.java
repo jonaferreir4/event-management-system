@@ -13,7 +13,6 @@ public class Activity {
 	private String Localization;
 	private String speaker;
 	private Date dateActivity;
-	private Time timeActivity;
 	private Time duration;
 	private ArrayList<Participant> participants;
 	
@@ -33,7 +32,6 @@ public class Activity {
 		Localization = localization;
 		this.speaker = speaker;
 		this.dateActivity = dateActivity;
-		this.timeActivity = timeActivity;
 		this.duration = duration;
 	}
 
@@ -100,13 +98,6 @@ public class Activity {
 	public void setDateActivity(Date newDateActivity){
 		this.dateActivity = newDateActivity;
 	}
-	public Time getTimeActivity(){
-		return this.timeActivity;
-	}
-	
-	public void setTimeActivity(Time newTimeActivity){
-		this.timeActivity = newTimeActivity;
-	}
 	
 	public Time getDuration(){
 		return this.duration;
@@ -124,7 +115,7 @@ public class Activity {
 	
 	@Override
     public String toString() {
-        return "activity{" + "activityID=" + activityID + ", ActivityName=" + ActivityName + ", theme=" + theme  + ", type=" + type + ", description=" + description + ", Localization=" + Localization + ", speaker=" + speaker + ", dateActivity=" + dateActivity + ", timeActivity=" + timeActivity + ", duration="+ duration + '}';
+        return "activity{" + "activityID=" + activityID + ", ActivityName=" + ActivityName + ", theme=" + theme  + ", type=" + type + ", description=" + description + ", Localization=" + Localization + ", speaker=" + speaker + ", dateActivity=" + dateActivity + ", duration="+ duration + '}';
     }
 	
 }
