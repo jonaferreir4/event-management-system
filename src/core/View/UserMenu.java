@@ -31,7 +31,8 @@ public class UserMenu {
 	            System.out.println("1 - Criar Evento");
 	            System.out.println("2 - Inscrever-se em um Evento");
 	            System.out.println("3 - Busca de Eventos");
-	            System.out.println("4 - Voltar ao Menu Principal");
+	            System.out.println("4 - Meus eventos");
+	            System.out.println("5 - Voltar ao Menu Principal");
 	            
 	            String input = scanner.nextLine();
 
@@ -49,10 +50,10 @@ public class UserMenu {
 	                    	userSignUpMenu.userSignUpMenu();
 	                      break;
 	               
-	                    // case 7:
-	                    //     buscarEventos();
-	                    //     break;
 	                    case 4:
+	                    	System.out.println(user.getMyEvents());
+	                    	break;
+	                    case 5:
 	                        return;
 	                    default:
 	                        System.out.println("Opção inválida. Tente novamente.");
@@ -64,7 +65,7 @@ public class UserMenu {
 	        }
 	        }
 	            
-		  public void registerMeForEvent(String eventName, Participant participant) {
+		  public void registerMeForEvent(String eventName, Users participant) {
 			  EventController event = new EventController();
 			  Events myEvent = event.searchEventByName(eventName);
 			  

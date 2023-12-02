@@ -38,7 +38,6 @@ public class UserSignUpMenu {
     			 if (op == 1) {
     	                state = false;
     	                eventController.registerParticipantForEvent(user, event);
-    	                user = (Participant) user;
     	                System.out.println("Inscrição realizada com sucesso!");
     	                ParticipantMenu menu = new ParticipantMenu();
     	            } else if (op == 2) {

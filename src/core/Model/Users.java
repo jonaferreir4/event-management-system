@@ -1,15 +1,21 @@
 package core.Model;
 
+import java.util.ArrayList;
+
 import core.Utils.Date;
 
-public class Users  implements State{
+public class Users {
 	private String userID;
 	private String name;
 	private String email;
 	private String password;
 	private String dateOfBirth;
 	private Nivel nivel;
-	private boolean state;
+	// como organizador
+	private ArrayList<Events> myEvents = new ArrayList<Events>();
+	// como participante
+	private ArrayList<Events> registeredEvents;
+	private ArrayList<Activity> registeredActivities;
 	
 	public Users(String userID, String name, String email, String password, String dateOfBirth) {
 		this.userID = userID;
@@ -18,17 +24,59 @@ public class Users  implements State{
 		this.password = password;
 		this.dateOfBirth = dateOfBirth;
 		this.nivel = nivel.USER;
-		this.state = true;
 	}
 	
 	public Users() {
-		this.state = true;
 	}
 	
 	
+	public String getMyEvents(){
+		StringBuilder eventsInfo = new StringBuilder();
+
+	    for (Events event : myEvents) {
+	        eventsInfo.append("ID: ").append(event.getEventID())
+	                   .append(" - Nome: ").append(event.getEventName())
+	                   .append(" - Categoria: ").append(event.getCategory())
+	                   .append(" - Data: ").append(event.getDateStartEvent())
+	                   .append(" a ").append(event.getDateEndEvent())
+	                   .append("\n");
+	    }
+
+	    if (myEvents.isEmpty()) {
+	        eventsInfo.append("Nenhum evento encontrado.");
+	    }
+
+	    return eventsInfo.toString();
+
+	}
+	
+	public void addMyEvent(Events event) {
+		if (event != null) {
+			myEvents.add(event);
+		}
+	}
+	public void registerInEvents(Events event) {
+		if (event != null) {
+			registeredEvents.add(event);
+		}
+	}
+	
+	public void registerInActivity(Activity activity) {
+		if (activity != null) {
+			registeredActivities.add(activity);
+		}
+	}
+	
+
 	 public Nivel getNivel() {
 		return nivel;
 	}
+	 
+	 public void setNivel(Nivel nivel) {
+		 if (nivel != null) {
+			 this.nivel = nivel;
+		 }
+	 }
 
 	public String getUserID() {
 		return userID;
@@ -66,16 +114,6 @@ public class Users  implements State{
 	public String getName(){
 		return name;
 	}
-
-	@Override
-	public void reset() {
-		this.state = true;
-	}
-	@Override	
-	public void changeState() {
-		this.state = !this.state;
-	}
-	
 	
 	public String getEmail(){
 		return email;

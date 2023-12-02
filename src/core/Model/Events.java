@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 public class Events {
 	private String eventID; 
 	private String eventName;
-	private Organizer owner;
 	private Users creator;
 	private String type;
 	private String category;
@@ -21,24 +20,23 @@ public class Events {
 	private LocalDateTime dateEndEvent;
 
 
-	private ArrayList<Participant> participants; 
+	private ArrayList<Users> participants; 
 	private ArrayList<Activity> activities;
 
 	public Events() {
 		
 	}
 	
-	public Events(String eventID,String eventname,Organizer owner,Users creator,String type, String category, String description, String address, String theme ) {
+	public Events(String eventID,String eventname,Users creator,String type, String category, String description, String address, String theme ) {
 		this.eventID = eventID; 
 		this.eventName = eventname;
-		this.owner = owner;
 		this.creator = creator;
 		this.type = type;
 		this.category = category;
 		this.description = description;
 		this.address = address;
 		this.theme = theme;
-		this.participants = new ArrayList<Participant>();
+		this.participants = new ArrayList<Users>();
 		this.activities = new ArrayList<Activity>();
 	}
 	
@@ -54,13 +52,13 @@ public class Events {
 		}
 	}
 
-	public Organizer getOwner() {
-		return owner;
+	public Users getCreator() {
+		return creator;
 	}
-
-	public void setOwner(Organizer owner) {
-		if(owner != null) {
-			this.owner = owner;
+	
+	public void setCreator(Users creator) {
+		if (creator != null) {
+			this.creator = creator;
 		}
 	}
 
@@ -68,15 +66,15 @@ public class Events {
 		this.activities = activities;
 	}
 
-	public void addParticipant(Participant participant) {
+	public void addParticipant(Users participant) {
 	        participants.add(participant);
 	    }
 
-	    public void removeParticipant(Participant participant) {
+	    public void removeParticipant(Users participant) {
 	        participants.remove(participant);
 	    }
 
-	    public ArrayList<Participant> getParticipants() {
+	    public ArrayList<Users> getParticipants() {
 	        return participants;
 	    }
 	    
@@ -103,7 +101,7 @@ public class Events {
 	    }
 	    
 	
-	public void setParticipants(ArrayList<Participant> participants) {
+	public void setParticipants(ArrayList<Users> participants) {
 		this.participants = participants;
 	}
 	
@@ -196,6 +194,6 @@ public class Events {
 	
   @Override
     public String toString() {
-        return "Evento{" + "eventID=" + eventID + ", eventName=" + eventName + ", type=" + type + ", category=" + category + ", description=" + description + ", address=" + address + ", theme=" + theme + ", dateStartEvent=" + dateStartEvent + ", dateEndEvent=" + dateEndEvent + '}';
+        return "eventID=" + eventID + ", eventName=" + eventName + ", type=" + type + ", category=" + category + ", description=" + description + ", address=" + address + ", theme=" + theme + ", dateStartEvent=" + dateStartEvent + ", dateEndEvent=" + dateEndEvent;
     }
 }

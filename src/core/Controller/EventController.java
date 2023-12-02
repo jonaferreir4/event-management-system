@@ -34,17 +34,16 @@ public class EventController {
         return user.getNivel().equals(Nivel.PARTICIPANT);
     }
     
-    public void createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
-        if (hasUserPermission()) {
-            String organizerID = "ORG_" + eventID; 
-
-            Organizer owner = new Organizer(organizerID, creator.getName(), creator.getEmail(), creator.getPassword(), creator.getDateOfBirth()); 
-            Events newEvent = new Events(eventID, eventName, owner, creator, type, category, description, address, theme);
-            eventsList.add(newEvent);
-        } else {
-            System.out.println("Você não tem permissão para criar eventos.");
-        }
-    }
+	    public void createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
+	        if (hasUserPermission()) {
+	            Events newEvent = new Events(eventID, eventName, creator, type, category, description, address, theme);
+	            creator.setNivel(Nivel.ORGANIZER);
+	            eventsList.add(newEvent);
+	            user.addMyEvent(newEvent);
+	        } else {
+	            System.out.println("Você não tem permissão para criar eventos.");
+	        }
+	    }
 
     public Events searchEventByName(String name) {
     	 if(hasUserPermission()){
@@ -88,15 +87,11 @@ public class EventController {
 
     public void registerParticipantForEvent(Users user, Events event) {
     	 if (hasUserPermission()) {
-    	        if (user instanceof Participant) {
-    	            event.addParticipant((Participant) user);
+    	            event.addParticipant(user);
+    	            user.setNivel(Nivel.PARTICIPANT);
     	            System.out.println("Inscrição realizada com sucesso!");
+    	       
     	        } else {
-    	            Participant participant = (Participant) user;
-    	            event.addParticipant(participant);
-    	            System.out.println("Inscrição realizada com sucesso! O usuário agora é um participante.");
-    	        }
-    	    } else {
     	        System.out.println("Você não tem permissão para se inscrever em eventos.");
     	    }
     }

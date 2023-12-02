@@ -14,10 +14,10 @@ public class Activity {
 	private String speaker;
 	private Date dateActivity;
 	private Time duration;
-	private ArrayList<Participant> participants;
+	private ArrayList<Users> participants;
 	
 	public Activity() {
-		participants = new ArrayList<Participant>();
+		participants = new ArrayList<Users>();
 		
 	}
 	
@@ -107,7 +107,7 @@ public class Activity {
 		this.duration = newDuration;
 	}
 	
-	public void addParticipant(Participant participant) {
+	public void addParticipant(Users participant) {
 		if(participant != null) {
 			participants.add(participant);
 		}

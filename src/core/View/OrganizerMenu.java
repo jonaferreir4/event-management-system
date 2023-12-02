@@ -4,13 +4,13 @@ import core.Model.*;
 import java.util.Scanner;
 
 public class OrganizerMenu {
-	private Participant user;
+	private Users user;
 	private Events event;
 	public OrganizerMenu() {
 		
 	}
 	
-	public OrganizerMenu(Participant user, Events event) {
+	public OrganizerMenu(Users user, Events event) {
 		
 	}
 	

@@ -1,13 +1,9 @@
 package core.Controller;
 
-import core.Model.Activity;
-import core.Model.Events;
-import core.Model.Nivel;
-import core.Model.Participant;
-
+import core.Model.*;
 public class ActivityController {
 	
-private Participant participant;
+private Users participant;
 	
 	private boolean hasParticipantPermission() {
         return participant.getNivel().equals(Nivel.PARTICIPANT);

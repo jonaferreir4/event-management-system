@@ -4,13 +4,13 @@ import core.Model.*;
 import java.util.Scanner;
 
 public class ParticipantMenu {
-	private Participant user;
+	private Users user;
 	private Events event;
 	public ParticipantMenu() {
 		
 	}
 	
-	public ParticipantMenu(Participant user, Events event) {
+	public ParticipantMenu(Users user, Events event) {
 		
 	}
 	
