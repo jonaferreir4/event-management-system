@@ -86,10 +86,10 @@ public class EventController {
     	}
     }
 
-    public void registerParticipantForEvent(Participant user, Events event) {
+    public void registerParticipantForEvent(Users user, Events event) {
     	if (hasUserPermission()) {
-   
-                event.addParticipant(user);
+    		
+                event.addParticipant((Participant)user);
             }
         }
     

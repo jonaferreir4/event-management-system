@@ -10,8 +10,8 @@ public class Participant  extends Users{
 	private ArrayList<String> registeredActivities;
 	
 	public Participant(String participantID, String name, String email, String password, String dateOfBirth) {
-		super(participantID, name, email, email, dateOfBirth);
-		this.nivel = Nivel.PARTICIPANT;
+	    super(participantID, name, email, password, dateOfBirth);
+	    this.nivel = Nivel.PARTICIPANT;
 	}
 	
 	

@@ -22,6 +22,7 @@ public class UserSignUpMenu {
 		System.out.println("Qual o nome do evento em que você deseja se increver?");
 		String eventName = scanner.nextLine();
 		Events event = eventController.searchEventByName(eventName);
+		
     	if (event != null) {
     		System.out.println("Nome: " + event.getEventName() +" - Endereço: " + event.getAddress() + " - Data e Horário: " 
     	+ event.getDateStartEvent() + " a " + event.getDateEndEvent());
@@ -34,14 +35,20 @@ public class UserSignUpMenu {
     			System.out.println("2 - Não");
     			int op = scanner.nextInt();
     			
-    			if (op == 1 || op == 2) {
-    				state = false;
-    			}
+    			 if (op == 1) {
+    	                state = false;
+    	                eventController.registerParticipantForEvent(user, event);
+    	                user = (Participant) user;
+    	                System.out.println("Inscrição realizada com sucesso!");
+    	                ParticipantMenu menu = new ParticipantMenu();
+    	            } else if (op == 2) {
+    	                state = false;
+    	            }
     		}while(state);
-    		eventController.registerParticipantForEvent((Participant)user, event);
-    		ParticipantMenu menu = new ParticipantMenu();
     		
     		
+    	} else {
+    		System.out.println("O evento não existe! Verifique se o nome está correto.");
     	}
 		
 		

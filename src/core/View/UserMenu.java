@@ -46,7 +46,7 @@ public class UserMenu {
 	                      break;
 	                    case 2:
 	                    	UserSignUpMenu userSignUpMenu = new UserSignUpMenu(user, eventController);
-	                    	
+	                    	userSignUpMenu.userSignUpMenu();
 	                      break;
 	               
 	                    // case 7:
