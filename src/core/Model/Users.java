@@ -31,22 +31,17 @@ public class Users {
 	
 	
 	public String getMyEvents(){
-		StringBuilder eventsInfo = new StringBuilder();
+		 StringBuilder eventsInfo = new StringBuilder();
 
-	    for (Events event : myEvents) {
-	        eventsInfo.append("ID: ").append(event.getEventID())
-	                   .append(" - Nome: ").append(event.getEventName())
-	                   .append(" - Categoria: ").append(event.getCategory())
-	                   .append(" - Data: ").append(event.getDateStartEvent())
-	                   .append(" a ").append(event.getDateEndEvent())
-	                   .append("\n");
-	    }
+		    for (Events event : myEvents) {
+		        eventsInfo.append(event.toString()).append("\n");
+		    }
 
-	    if (myEvents.isEmpty()) {
-	        eventsInfo.append("Nenhum evento encontrado.");
-	    }
+		    if (myEvents.isEmpty()) {
+		        eventsInfo.append("Nenhum evento encontrado.");
+		    }
 
-	    return eventsInfo.toString();
+		    return eventsInfo.toString();
 
 	}
 	
@@ -66,6 +61,7 @@ public class Users {
 			registeredActivities.add(activity);
 		}
 	}
+	
 	
 
 	 public Nivel getNivel() {

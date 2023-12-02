@@ -55,6 +55,7 @@ public class UserMenu {
 	                    	break;
 	                    case 5:
 	                        return;
+	  
 	                    default:
 	                        System.out.println("Opção inválida. Tente novamente.");
 	                        break;

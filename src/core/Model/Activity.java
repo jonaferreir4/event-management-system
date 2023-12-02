@@ -115,7 +115,7 @@ public class Activity {
 	
 	@Override
     public String toString() {
-        return "activity{" + "activityID=" + activityID + ", ActivityName=" + ActivityName + ", theme=" + theme  + ", type=" + type + ", description=" + description + ", Localization=" + Localization + ", speaker=" + speaker + ", dateActivity=" + dateActivity + ", duration="+ duration + '}';
+        return "activityID=" + activityID + ", ActivityName=" + ActivityName + ", theme=" + theme  + ", type=" + type + ", description=" + description + ", Localization=" + Localization + ", speaker=" + speaker + ", dateActivity=" + dateActivity + ", duration="+ duration;
     }
 	
 }

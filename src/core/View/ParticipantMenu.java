@@ -1,6 +1,7 @@
 package core.View;
 
 import core.Model.*;
+import core.Controller.*;
 import java.util.Scanner;
 
 public class ParticipantMenu {
@@ -45,18 +46,33 @@ public class ParticipantMenu {
 	
 	
 	public void listActivities() {
-		
-		if(event.getActivities() != null) {
-			for (Activity activity: event.getActivities()) {
-				System.out.println(activity.toString());
-			}			
-		}else {
-			System.out.println("Nenhuma atividade cadastrada!");
-		}
+		   if (event.getActivities() != null && !event.getActivities().isEmpty()) {
+		        for (Activity activity : event.getActivities()) {
+		            System.out.println(activity.toString());
+		            System.out.println();  // Adicione uma linha em branco entre as atividades, se desejar
+		        }
+		    } else {
+		        System.out.println("Nenhuma atividade cadastrada!");
+		    }
 	}
 	public void participantRegistrationActivity() {
-		event.addParticipant(user);
-	}
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o nome da atividade para a qual deseja se inscrever: ");
+        String activityName = scanner.nextLine();
+
+        ActivityController activityController = new ActivityController();
+        activityController.setParticipant(user);
+
+        Events currentEvent = event; 
+        Activity activity = currentEvent.getActivity(activityName);
+
+        if (activity != null) {
+            activityController.registerForActivity(currentEvent, activity);
+            System.out.println("Inscrição na atividade realizada com sucesso!");
+        } else {
+            System.out.println("Atividade não encontrada. Verifique o nome e tente novamente.");
+        }
+    }
 
 }
 

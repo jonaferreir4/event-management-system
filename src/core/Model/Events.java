@@ -194,6 +194,6 @@ public class Events {
 	
   @Override
     public String toString() {
-        return "eventID=" + eventID + ", eventName=" + eventName + ", type=" + type + ", category=" + category + ", description=" + description + ", address=" + address + ", theme=" + theme + ", dateStartEvent=" + dateStartEvent + ", dateEndEvent=" + dateEndEvent;
+        return "ID: " + eventID + " - Nome: " + eventName + " - Tipo: " + type + " - Categoria: " + category + " - Descrição: " + description + " - Endereço: " + address + " - Tema: " + theme + " - Data de início: " + dateStartEvent + " - Data de término: " + dateEndEvent;
     }
 }

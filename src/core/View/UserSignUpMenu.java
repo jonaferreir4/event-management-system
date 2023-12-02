@@ -28,6 +28,7 @@ public class UserSignUpMenu {
     	+ event.getDateStartEvent() + " a " + event.getDateEndEvent());
     	boolean state = true;
     	
+    		ParticipantMenu menu = new ParticipantMenu();
     		 do{
     			 
     			System.out.println("Esse é o evento certo?");
@@ -38,10 +39,10 @@ public class UserSignUpMenu {
     			 if (op == 1) {
     	                state = false;
     	                eventController.registerParticipantForEvent(user, event);
-    	                System.out.println("Inscrição realizada com sucesso!");
-    	                ParticipantMenu menu = new ParticipantMenu();
+    	                menu.participantMenu();
     	            } else if (op == 2) {
     	                state = false;
+    	              
     	            }
     		}while(state);
     		
