@@ -87,11 +87,19 @@ public class EventController {
     }
 
     public void registerParticipantForEvent(Users user, Events event) {
-    	if (hasUserPermission()) {
-    		
-                event.addParticipant((Participant)user);
-            }
-        }
+    	 if (hasUserPermission()) {
+    	        if (user instanceof Participant) {
+    	            event.addParticipant((Participant) user);
+    	            System.out.println("Inscrição realizada com sucesso!");
+    	        } else {
+    	            Participant participant = (Participant) user;
+    	            event.addParticipant(participant);
+    	            System.out.println("Inscrição realizada com sucesso! O usuário agora é um participante.");
+    	        }
+    	    } else {
+    	        System.out.println("Você não tem permissão para se inscrever em eventos.");
+    	    }
+    }
     
     public void setCurrentUser(Users user) {
         this.user = user;

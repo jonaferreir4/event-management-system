@@ -13,6 +13,9 @@ public class Participant  extends Users{
 	    super(participantID, name, email, password, dateOfBirth);
 	    this.nivel = Nivel.PARTICIPANT;
 	}
+	public Participant() {
+		
+	}
 	
 	
 	public String getParticipantID() {
