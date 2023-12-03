@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import core.Utils.Time;
 
 public class Activity {
+	private static int nextActivityIDCounter = 1;
 	private String activityID;
 	private String ActivityName;
 	private String theme;
@@ -24,9 +25,9 @@ public class Activity {
 	}
 	
 	
-	public Activity(String activityID, String activityName, String theme, String type, String description,
+	public Activity( String activityName, String theme, String type, String description,
 			String localization, String speaker, LocalDateTime dateActivity, LocalDateTime duration) {
-		this.activityID = activityID;
+		this.activityID = generateActivityID();
 		this.ActivityName = activityName;
 		this.theme = theme;
 		this.type = type;
@@ -114,6 +115,10 @@ public class Activity {
 		if(participant != null) {
 			participants.add(participant);
 		}
+	}
+	
+	private String generateActivityID() {
+	    return  String.valueOf(nextActivityIDCounter++);
 	}
 	
 	@Override

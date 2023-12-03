@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 
 public class Events {
+	private static int nextEventIDCounter = 1;
 	private String eventID; 
 	private String eventName;
 	private Users creator;
@@ -27,8 +28,8 @@ public class Events {
 		
 	}
 	
-	public Events(String eventID,String eventname,Users creator,String type, String category, String description, String address, String theme ) {
-		this.eventID = eventID; 
+	public Events(String eventname,Users creator,String type, String category, String description, String address, String theme ) {
+		this.eventID = generateEventID();
 		this.eventName = eventname;
 		this.creator = creator;
 		this.type = type;
@@ -188,6 +189,10 @@ public class Events {
 	
 	public LocalDateTime getDateEndEvent() {
 		return dateEndEvent;
+	}
+	
+	private String generateEventID() {
+	    return  String.valueOf(nextEventIDCounter++);
 	}
 
 	

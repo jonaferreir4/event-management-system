@@ -9,17 +9,17 @@ import core.Controller.UserController;
 import core.Model.*;
 import java.util.Scanner;
 
-public class OrganizerMenu {
+public class ActivityMenu {
 	private Users user;
 	private Events event;
 	private UserController userController;
 	private EventController eventController;
 
-	public OrganizerMenu() {
+	public ActivityMenu() {
 		
 	}
 	
-	public OrganizerMenu(Users user, Events event,UserController userController ,EventController eventController) {
+	public ActivityMenu(Users user, Events event,UserController userController ,EventController eventController) {
 		this.user = user;
 		this.event = event;
 		this.userController = userController;
@@ -27,9 +27,9 @@ public class OrganizerMenu {
 		
 	}
 	
-	public void organizerMenu() {
+	public void activityMenu() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Menu do Organizador: ");
+		System.out.println("Menu de Atividades: ");
 		System.out.println("1 - Criar Atividades");
 		System.out.println("2 - Atualizar Atividades");
 		System.out.println("3 - Deletar Atividade");
@@ -67,8 +67,6 @@ public class OrganizerMenu {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Digite o as informações necessárias para criar a atividade:");
-		System.out.println("ID da atividade: ");
-		String id = scanner.nextLine();
 		System.out.println("nome da atividade: ");
 		String name = scanner.nextLine();
 		System.out.println("tema da atividade: ");
@@ -88,13 +86,13 @@ public class OrganizerMenu {
 		long durationInMinutes = scanner.nextLong();
 	    LocalDateTime duration = date.plusMinutes(durationInMinutes);
 		
-		Activity activity = new Activity(id, name, theme, type, description, Localization, speaker, date, duration);
+		Activity activity = new Activity( name, theme, type, description, Localization, speaker, date, duration);
 		event.addActivity(activity);
 		user.addMyActivity(activity);
 		System.out.println("Atividade criada com sucesso!");
 	}
 	
-	public void upDateActivity() {
+	public void updateActivity() {
 		
 	}
 	

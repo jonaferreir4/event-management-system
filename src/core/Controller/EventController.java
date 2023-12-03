@@ -44,9 +44,9 @@ public class EventController {
     }
     
     
-	public Events createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
+	public Events createEvent( String eventName, Users creator, String type, String category, String description, String address, String theme) {
 	        if (hasUserPermission()) {
-	            Events newEvent = new Events(eventID, eventName, creator, type, category, description, address, theme);
+	            Events newEvent = new Events( eventName, creator, type, category, description, address, theme);
 	            creator.setNivel(Nivel.ORGANIZER);
 	            eventsList.add(newEvent);
 	            user.addMyEvent(newEvent);
