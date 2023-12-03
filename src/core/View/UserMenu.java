@@ -41,7 +41,7 @@ public class UserMenu {
 
 	                switch (choice) {
 	                    case 1:
-	                    	 EventRegistrationMenu event = new EventRegistrationMenu(userController, eventController);
+	                    	 EventRegistrationMenu event = new EventRegistrationMenu(user, userController, eventController);
 	                         event.setLoggedInUser(user);
 	                         event.EventMenu();	                  
 	                      break;
@@ -50,6 +50,9 @@ public class UserMenu {
 	                    	userSignUpMenu.userSignUpMenu();
 	                      break;
 	               
+	                    case 3:
+	                    	searchEvent();
+	                    	break;
 	                    case 4:
 	                    	System.out.println(user.getMyEvents());
 	                    	break;
@@ -75,10 +78,23 @@ public class UserMenu {
 			  }
 		  }
 		  
+		  public void searchEvent() {
+			  Scanner scanner = new Scanner(System.in);
+			  System.out.println("Qual o nome do evento? ");
+			  String name = scanner.nextLine();
+			  Events event = eventController.searchEventByName(name);
+			  if (event == null) {
+				  System.out.println("Evento não encontrado!");
+			  }else {
+				  System.out.println(event.toString());  
+			  }
+		  }
 		  
 		  public void setUser(Users user) {
 			    this.user = user;
 			}
+		  
+		  
 		  
 		  
 	  }

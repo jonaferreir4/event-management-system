@@ -28,7 +28,7 @@ public class UserSignUpMenu {
     	+ event.getDateStartEvent() + " a " + event.getDateEndEvent());
     	boolean state = true;
     	
-    		ParticipantMenu menu = new ParticipantMenu();
+    		ParticipantMenu menu = new ParticipantMenu(user, event);
     		 do{
     			 
     			System.out.println("Esse é o evento certo?");

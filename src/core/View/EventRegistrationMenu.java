@@ -5,6 +5,7 @@ import java.util.Scanner;
 import core.Controller.*;
 
 public class EventRegistrationMenu {
+	
 	private EventController eventController;
 	private UserController userController;
 	private Users loggedInUser;
@@ -13,7 +14,8 @@ public class EventRegistrationMenu {
 		
 	}
 	
-	public EventRegistrationMenu(UserController userController ,EventController eventController) {
+	public EventRegistrationMenu(Users user,UserController userController ,EventController eventController) {
+		loggedInUser = user;
 		this.userController = userController;
 		this.eventController = eventController;
 	}
@@ -48,6 +50,9 @@ public class EventRegistrationMenu {
 	        eventController.createEvent(eventID, eventName,loggedInUser, type, category, description, address, theme);
 	        
 	        System.out.println("Evento criado com sucesso: " + eventName);
+	        OrganizerMenu menu = new OrganizerMenu(loggedInUser);
+	        menu.organizerMenu();
+	        
 	        
 	        
 	    }

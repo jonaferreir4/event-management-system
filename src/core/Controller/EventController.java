@@ -21,16 +21,25 @@ public class EventController {
     }
     
     private boolean hasUserPermission() {
-        return	(user.getNivel() == Nivel.USER ||
-        user.getNivel() == Nivel.ORGANIZER || 
-        user.getNivel() == Nivel.PARTICIPANT);
+    	if (user == null) {
+             return false;
+        }
+        return (user.getNivel() == Nivel.USER ||
+                user.getNivel() == Nivel.ORGANIZER || 
+                user.getNivel() == Nivel.PARTICIPANT);
     }
 
     private boolean hasOrganizerPermission() {
+    	if (user == null) {
+            return false;
+       }
         return user.getNivel().equals(Nivel.ORGANIZER);
     }
 
     private boolean hasParticipantPermission() {
+    	if (user == null) {
+            return false;
+       }
         return user.getNivel().equals(Nivel.PARTICIPANT);
     }
     
@@ -46,7 +55,7 @@ public class EventController {
 	    }
 
     public Events searchEventByName(String name) {
-    	 if(hasUserPermission()){
+    	 if(hasUserPermission() &&  this.user != null){
     		 for (Events event : eventsList) {
     			 if (event.getEventName().equals(name)) {
     				 return event;
@@ -81,7 +90,7 @@ public class EventController {
 
     public void deleteEvent(String nome, String tipo) {
     	if(hasOrganizerPermission()) {
-    		
+    		/// implementar lógica para deletar evento
     	}
     }
 

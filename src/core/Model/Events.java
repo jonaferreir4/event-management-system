@@ -1,4 +1,4 @@
-	package core.Model;
+package core.Model;
 
 import java.util.ArrayList;	
 import java.time.LocalDateTime;
@@ -20,8 +20,8 @@ public class Events {
 	private LocalDateTime dateEndEvent;
 
 
-	private ArrayList<Users> participants; 
-	private ArrayList<Activity> activities;
+	private ArrayList<Users> participants = new ArrayList<Users>(); 
+	private ArrayList<Activity> activities = new ArrayList<Activity>();
 
 	public Events() {
 		
@@ -36,8 +36,7 @@ public class Events {
 		this.description = description;
 		this.address = address;
 		this.theme = theme;
-		this.participants = new ArrayList<Users>();
-		this.activities = new ArrayList<Activity>();
+		
 	}
 	
 	
@@ -62,9 +61,6 @@ public class Events {
 		}
 	}
 
-	public void setActivities(ArrayList<Activity> activities) {
-		this.activities = activities;
-	}
 
 	public void addParticipant(Users participant) {
 	        participants.add(participant);
@@ -100,6 +96,9 @@ public class Events {
 	        return activities;
 	    }
 	    
+	    public void setActivities(ArrayList<Activity> activities) {
+	    	this.activities = activities;
+	    }
 	
 	public void setParticipants(ArrayList<Users> participants) {
 		this.participants = participants;

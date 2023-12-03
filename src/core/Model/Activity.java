@@ -1,6 +1,8 @@
 package core.Model;
 
 import core.Utils.Date;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import core.Utils.Time;
 
@@ -12,8 +14,8 @@ public class Activity {
 	private String description;
 	private String Localization;
 	private String speaker;
-	private Date dateActivity;
-	private Time duration;
+	private LocalDateTime dateActivity;
+	private LocalDateTime duration;
 	private ArrayList<Users> participants;
 	
 	public Activity() {
@@ -23,7 +25,7 @@ public class Activity {
 	
 	
 	public Activity(String activityID, String activityName, String theme, String type, String description,
-			String localization, String speaker, Date dateActivity, Time timeActivity, Time duration) {
+			String localization, String speaker, LocalDateTime dateActivity, LocalDateTime duration) {
 		this.activityID = activityID;
 		ActivityName = activityName;
 		this.theme = theme;
@@ -91,21 +93,22 @@ public class Activity {
 	public void setSpeaker(String newSpeaker){
 		this.speaker = newSpeaker;
 	}
-	public Date getDateActivity(){
-		return this.dateActivity;
-	}
-	
-	public void setDateActivity(Date newDateActivity){
-		this.dateActivity = newDateActivity;
-	}
-	
-	public Time getDuration(){
-		return this.duration;
-	}
-	
-	public void setDuration(Time newDuration){
-		this.duration = newDuration;
-	}
+	 public LocalDateTime getDateActivity() {
+	        return this.dateActivity;
+	    }
+
+	    public void setDateActivity(LocalDateTime newDateActivity) {
+	        this.dateActivity = newDateActivity;
+	    }
+
+	    public LocalDateTime getDuration() {
+	        return this.duration;
+	    }
+
+	    public void setDuration(LocalDateTime newDuration) {
+	        this.duration = newDuration;
+	    }
+
 	
 	public void addParticipant(Users participant) {
 		if(participant != null) {
