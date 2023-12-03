@@ -22,17 +22,12 @@ public class UserRegistrationMenu {
     }
 	
 	public void menuCadastroUsuario() {
-   	 	String userID;
 		String name;
 		String email;
 		String password;
 		Date dateOfBirth;
    	 
 		while (true) {
-			
-		System.out.println("\nCadastro de Usuário:");
-   	 	System.out.println("id do usuário: ");
-   	 	userID = scanner.nextLine();
    	 
         System.out.print("Nome: ");
         name = scanner.nextLine();
@@ -47,7 +42,7 @@ public class UserRegistrationMenu {
         String dateOfBirthStr = scanner.nextLine();
         
         if (name != "" && email != "" && password != "" && dateOfBirthStr != "") {
-        	Users newUser = userController.registrationUser(userID, name, email, password, dateOfBirthStr);
+        	Users newUser = userController.registrationUser( name, email, password, dateOfBirthStr);
         	
         	int firstSpaceIndex = name.indexOf(" ");
             if (firstSpaceIndex != -1) {

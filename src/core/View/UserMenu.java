@@ -29,10 +29,12 @@ public class UserMenu {
 	        	
 	            System.out.println("Menu do Usuário:");
 	            System.out.println("1 - Criar Evento");
-	            System.out.println("2 - Inscrever-se em um Evento");
-	            System.out.println("3 - Busca de Eventos");
-	            System.out.println("4 - Meus eventos");
-	            System.out.println("5 - Voltar ao Menu Principal");
+	            System.out.println("2 - Atualizar Eventos");
+	            System.out.println("3 - Deletar Evento");
+	            System.out.println("4 - Inscrever-se em um Evento");
+	            System.out.println("5 - Busca de Eventos");
+	            System.out.println("6 - Meus eventos");
+	            System.out.println("7 - Voltar ao Menu Principal");
 	            
 	            String input = scanner.nextLine();
 
@@ -45,18 +47,25 @@ public class UserMenu {
 	                         event.setLoggedInUser(user);
 	                         event.EventMenu();	                  
 	                      break;
-	                    case 2:
+	                      
+	                    case 2:	                       
+	                    	updateEventView();
+	                        break;
+	                    case 3:
+	                    	deleteEventView();
+	                        break;
+	                    case 4:
 	                    	UserSignUpMenu userSignUpMenu = new UserSignUpMenu(user, eventController);
 	                    	userSignUpMenu.userSignUpMenu();
 	                      break;
 	               
-	                    case 3:
+	                    case 5:
 	                    	searchEvent();
 	                    	break;
-	                    case 4:
+	                    case 6:
 	                    	System.out.println(user.getMyEvents());
 	                    	break;
-	                    case 5:
+	                    case 7:
 	                        return;
 	  
 	                    default:
@@ -96,6 +105,68 @@ public class UserMenu {
 		  
 		  
 		  
+			public void updateEventView() {
+			    Scanner scanner = new Scanner(System.in);
+
+			    System.out.println("Digite o nome do evento que deseja atualizar:");
+			    String nomeEvento = scanner.nextLine();
+
+			    Events evento = eventController.searchEventByName(nomeEvento);
+
+			    if (evento != null) {
+			        System.out.println("Digite as novas informações do evento (ou pressione Enter para manter as informações existentes):");
+
+			        System.out.print("Novo nome: ");
+			        String novoNome = scanner.nextLine();
+
+			        System.out.print("Novo tipo: ");
+			        String novoTipo = scanner.nextLine();
+
+			        System.out.print("Nova categoria: ");
+			        String novaCategoria = scanner.nextLine();
+
+			        System.out.print("Nova descrição: ");
+			        String novaDescricao = scanner.nextLine();
+
+			        System.out.print("Novo endereço: ");
+			        String novoEndereco = scanner.nextLine();
+
+			        System.out.print("Novo tema: ");
+			        String novoTema = scanner.nextLine();
+
+			        eventController.updateEvent(
+			            nomeEvento,
+			            (novoNome.isEmpty() ? null : novoNome),
+			            (novoTipo.isEmpty() ? null : novoTipo),
+			            (novaCategoria.isEmpty() ? null : novaCategoria),
+			            (novaDescricao.isEmpty() ? null : novaDescricao),
+			            (novoEndereco.isEmpty() ? null : novoEndereco),
+			            (novoTema.isEmpty() ? null : novoTema)
+			        );
+
+			        System.out.println("Evento atualizado com sucesso!");
+			    } else {
+			        System.out.println("Evento não encontrado.");
+			    }
+			}
+
+			
+			public void deleteEventView() {
+			    Scanner scanner = new Scanner(System.in);
+
+			    System.out.println("Digite o nome do evento que deseja deletar:");
+			    String nomeEvento = scanner.nextLine();
+
+			    Events evento = eventController.searchEventByName(nomeEvento);
+
+			    if (evento != null) {
+			        eventController.deleteEvent(nomeEvento);
+			        System.out.println("Evento deletado com sucesso!");
+			    } else {
+			        System.out.println("Evento não encontrado.");
+			    }
+			}
+
 		  
 	  }
 

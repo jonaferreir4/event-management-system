@@ -6,11 +6,10 @@ import core.Model.*;
 import core.Utils.Date;
 
 public class UserController {
-	 private ArrayList<Users> userList; // L
+	 private ArrayList<Users> userList;
 
 	public UserController() {
 		 userList = new ArrayList<Users>(); // Inicialize a lista de usuários, se necessário
-		
 	}
 	
 	public Users authenticateUser(String username, String password) {
@@ -23,12 +22,12 @@ public class UserController {
     }
 	
 	/// Esse método vai criar os usuários e adicionar ao arrayList na classe userManager
-    public Users registrationUser(String userID, String name, String email, String password, String dateOfBirth) {
-  
-    	Users newUser = new Users(userID, name, email, password,dateOfBirth);
-        userList.add(newUser);  
+    public Users registrationUser(String name, String email, String password, String dateOfBirth) {
+    	Users newUser = new Users( name, email, password,dateOfBirth);
+        userList.add(newUser); 
         return newUser;
-        }   
+        }  
+    
     
    // Esse método queando terminado servirá para pesquisar usuários pelo nome 
     public Users searchUser(String name) {

@@ -33,8 +33,6 @@ public class OrganizerMenu {
 		System.out.println("1 - Criar Atividades");
 		System.out.println("2 - Atualizar Atividades");
 		System.out.println("3 - Deletar Atividade");
-		System.out.println("4 - Atualizar Eventos");
-		System.out.println("5 - Deletar Evento");
 		System.out.println("0 - Retornar");
 		int op = scanner.nextInt();
 		boolean state;;
@@ -52,14 +50,7 @@ public class OrganizerMenu {
 				
 			case 3:
 			
-				break;
-			case 4:
-				updateEventView();
-				break;
-			case 5:
-				deleteEventView();
-				break;
-				
+				break;		
 			case 0:
 				break;
 			default:
@@ -69,68 +60,6 @@ public class OrganizerMenu {
 		
 		
 		}while(state);
-	}
-	
-	public void updateEventView() {
-	    Scanner scanner = new Scanner(System.in);
-
-	    System.out.println("Digite o nome do evento que deseja atualizar:");
-	    String nomeEvento = scanner.nextLine();
-
-	    Events evento = eventController.searchEventByName(nomeEvento);
-
-	    if (evento != null) {
-	        System.out.println("Digite as novas informações do evento (ou pressione Enter para manter as informações existentes):");
-
-	        System.out.print("Novo nome: ");
-	        String novoNome = scanner.nextLine();
-
-	        System.out.print("Novo tipo: ");
-	        String novoTipo = scanner.nextLine();
-
-	        System.out.print("Nova categoria: ");
-	        String novaCategoria = scanner.nextLine();
-
-	        System.out.print("Nova descrição: ");
-	        String novaDescricao = scanner.nextLine();
-
-	        System.out.print("Novo endereço: ");
-	        String novoEndereco = scanner.nextLine();
-
-	        System.out.print("Novo tema: ");
-	        String novoTema = scanner.nextLine();
-
-	        eventController.updateEvent(
-	            nomeEvento,
-	            (novoNome.isEmpty() ? null : novoNome),
-	            (novoTipo.isEmpty() ? null : novoTipo),
-	            (novaCategoria.isEmpty() ? null : novaCategoria),
-	            (novaDescricao.isEmpty() ? null : novaDescricao),
-	            (novoEndereco.isEmpty() ? null : novoEndereco),
-	            (novoTema.isEmpty() ? null : novoTema)
-	        );
-
-	        System.out.println("Evento atualizado com sucesso!");
-	    } else {
-	        System.out.println("Evento não encontrado.");
-	    }
-	}
-
-	
-	public void deleteEventView() {
-	    Scanner scanner = new Scanner(System.in);
-
-	    System.out.println("Digite o nome do evento que deseja deletar:");
-	    String nomeEvento = scanner.nextLine();
-
-	    Events evento = eventController.searchEventByName(nomeEvento);
-
-	    if (evento != null) {
-	        eventController.deleteEvent(nomeEvento);
-	        System.out.println("Evento deletado com sucesso!");
-	    } else {
-	        System.out.println("Evento não encontrado.");
-	    }
 	}
 
 	

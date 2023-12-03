@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import core.Utils.Date;
 
 public class Users {
+	private static int nextUserIDCounter = 1;
 	private String userID;
 	private String name;
 	private String email;
@@ -18,8 +19,8 @@ public class Users {
 	private ArrayList<Events> registeredEvents;
 	private ArrayList<Activity> registeredActivities;
 	
-	public Users(String userID, String name, String email, String password, String dateOfBirth) {
-		this.userID = userID;
+	public Users( String name, String email, String password, String dateOfBirth) {
+		this.userID = generateUserID();
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -143,6 +144,10 @@ public class Users {
 
 	public String getDateOfBirth(){
 		return dateOfBirth;
+	}
+	
+	private String generateUserID() {
+	    return  String.valueOf(nextUserIDCounter++);
 	}
 	
 }
