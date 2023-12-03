@@ -43,7 +43,8 @@ public class EventController {
         return user.getNivel().equals(Nivel.PARTICIPANT);
     }
     
-	    public Events createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
+    
+	public Events createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
 	        if (hasUserPermission()) {
 	            Events newEvent = new Events(eventID, eventName, creator, type, category, description, address, theme);
 	            creator.setNivel(Nivel.ORGANIZER);
@@ -80,31 +81,59 @@ public class EventController {
     	    
     }
 
-    public void updateEvent(String nome) {
-        if(hasOrganizerPermission()) {
-        	Events event = searchEventByName(nome);
-        	if (event != null) {
-        		// Implemente a lógica de atualização aqui
-        	}
-        	
+ // No método EventController.updateEvent
+    public void updateEvent(String nome, String novoNome, String novoTipo, String novaCategoria, String novaDescricao, String novoEndereco, String novoTema) {
+        if (hasOrganizerPermission()) {
+            Events event = searchEventByName(nome);
+            if (event != null) {
+                // Atualizar os atributos do evento apenas se o novo valor não for nulo
+                if (novoNome != null) {
+                    event.setEventName(novoNome);
+                }
+                if (novoTipo != null) {
+                    event.setType(novoTipo);
+                }
+                if (novaCategoria != null) {
+                    event.setCategory(novaCategoria);
+                }
+                if (novaDescricao != null) {
+                    event.setDescription(novaDescricao);
+                }
+                if (novoEndereco != null) {
+                    event.setAddress(novoEndereco);
+                }
+                if (novoTema != null) {
+                    event.setTheme(novoTema);
+                }        
+            } 
+        } else {
+            System.out.println("Você não tem permissão para atualizar eventos.");
         }
     }
 
-    public void deleteEvent(String nome, String tipo) {
-    	if(hasOrganizerPermission()) {
-    		/// implementar lógica para deletar evento
-    	}
+
+    public void deleteEvent(String nome) {
+        if (hasOrganizerPermission()) {
+            Events event = searchEventByName(nome);
+            if (event != null) {
+                // Remover evento da lista
+                eventsList.remove(event);
+            }
+        } else {
+            System.out.println("Você não tem permissão para remover eventos.");
+        }
     }
 
+
     public void registerParticipantForEvent(Users user, Events event) {
-    	 if (hasUserPermission()) {
-    	            event.addParticipant(user);
-    	            user.setNivel(Nivel.PARTICIPANT);
-    	            System.out.println("Inscrição realizada com sucesso!");
+    	if (hasUserPermission()) {
+    	    event.addParticipant(user);
+    	    user.setNivel(Nivel.PARTICIPANT);
+    	    System.out.println("Inscrição realizada com sucesso!");
     	       
-    	        } else {
-    	        System.out.println("Você não tem permissão para se inscrever em eventos.");
-    	    }
+		} else {
+    	    System.out.println("Você não tem permissão para se inscrever em eventos.");
+    	}
     }
     
     public void setCurrentUser(Users user) {

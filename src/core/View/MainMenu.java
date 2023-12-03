@@ -31,7 +31,7 @@ public class MainMenu {
             System.out.println("Bem vindo ao Events! Escolha uma opção:");
             System.out.println("1 - Cadastro de Usuário");
             System.out.println("2 - login de Usuário");
-            System.out.println("3 - Ver ventos");
+            System.out.println("3 - Ver Eventos");
             System.out.println("4 - Sair");
 
             String input = scanner.nextLine();

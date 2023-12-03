@@ -30,12 +30,12 @@ public class OrganizerMenu {
 	public void organizerMenu() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Menu do Organizador: ");
-		System.out.println("1 - criar atividades");
-		System.out.println("2 - atualizar eventos");
-		System.out.println("3 - atualizar atividades");
-		System.out.println("4 - deletar evento");
-		System.out.println("5 - deletar atividade");
-		System.out.println("0 - retornar");
+		System.out.println("1 - Criar Atividades");
+		System.out.println("2 - Atualizar Atividades");
+		System.out.println("3 - Deletar Atividade");
+		System.out.println("4 - Atualizar Eventos");
+		System.out.println("5 - Deletar Evento");
+		System.out.println("0 - Retornar");
 		int op = scanner.nextInt();
 		boolean state;;
 		do {
@@ -43,21 +43,21 @@ public class OrganizerMenu {
 		switch (op) {
 			
 			case 1:
-				createActivity();
+				createActivityView();
 				break;
 				
 			case 2:
 				
-				break;
+			    break;
 				
 			case 3:
 			
 				break;
 			case 4:
-				
+				updateEventView();
 				break;
 			case 5:
-				
+				deleteEventView();
 				break;
 				
 			case 0:
@@ -71,15 +71,70 @@ public class OrganizerMenu {
 		}while(state);
 	}
 	
-	public void upDateEvent() {
-		
+	public void updateEventView() {
+	    Scanner scanner = new Scanner(System.in);
+
+	    System.out.println("Digite o nome do evento que deseja atualizar:");
+	    String nomeEvento = scanner.nextLine();
+
+	    Events evento = eventController.searchEventByName(nomeEvento);
+
+	    if (evento != null) {
+	        System.out.println("Digite as novas informações do evento (ou pressione Enter para manter as informações existentes):");
+
+	        System.out.print("Novo nome: ");
+	        String novoNome = scanner.nextLine();
+
+	        System.out.print("Novo tipo: ");
+	        String novoTipo = scanner.nextLine();
+
+	        System.out.print("Nova categoria: ");
+	        String novaCategoria = scanner.nextLine();
+
+	        System.out.print("Nova descrição: ");
+	        String novaDescricao = scanner.nextLine();
+
+	        System.out.print("Novo endereço: ");
+	        String novoEndereco = scanner.nextLine();
+
+	        System.out.print("Novo tema: ");
+	        String novoTema = scanner.nextLine();
+
+	        eventController.updateEvent(
+	            nomeEvento,
+	            (novoNome.isEmpty() ? null : novoNome),
+	            (novoTipo.isEmpty() ? null : novoTipo),
+	            (novaCategoria.isEmpty() ? null : novaCategoria),
+	            (novaDescricao.isEmpty() ? null : novaDescricao),
+	            (novoEndereco.isEmpty() ? null : novoEndereco),
+	            (novoTema.isEmpty() ? null : novoTema)
+	        );
+
+	        System.out.println("Evento atualizado com sucesso!");
+	    } else {
+	        System.out.println("Evento não encontrado.");
+	    }
 	}
+
 	
-	public void deleteEvent() {
-		
+	public void deleteEventView() {
+	    Scanner scanner = new Scanner(System.in);
+
+	    System.out.println("Digite o nome do evento que deseja deletar:");
+	    String nomeEvento = scanner.nextLine();
+
+	    Events evento = eventController.searchEventByName(nomeEvento);
+
+	    if (evento != null) {
+	        eventController.deleteEvent(nomeEvento);
+	        System.out.println("Evento deletado com sucesso!");
+	    } else {
+	        System.out.println("Evento não encontrado.");
+	    }
 	}
+
 	
-	public void createActivity() {
+	public void createActivityView() {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Digite o as informações necessárias para criar a atividade:");
