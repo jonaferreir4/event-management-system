@@ -50,7 +50,7 @@ public class MainMenu {
                     	
                     	break;
                     case 3:
-                    	System.out.println(eventController.listEvents());
+                    	viewEvents();
                     	break;
                     case 4:
                         System.out.println("Saindo do programa...");
@@ -65,6 +65,14 @@ public class MainMenu {
             }
         }
     } 
+    
+    private void viewEvents() {
+        if (eventController.listEvents().length() == 0) {
+            System.out.println("Nenhum evento foi cadastrado ainda.");
+        } else {
+            System.out.println(eventController.listEvents());
+        }
+    }
 }
 
 

@@ -69,17 +69,25 @@ public class EventController {
     }
 
     public String listEvents() {
-    	 ArrayList<String> eventsAsStringList = new ArrayList<String>();
-    	    if (eventsList != null) {
-    	    	String eventList = eventsList.toString();
-    	    	return eventList;
-    	    }else {
-    	    	return "Não há eventos Cadastrados";
-    	    }
-    	    
-    	    
-    	    
+        StringBuilder result = new StringBuilder();
+
+        if (eventsList != null && !eventsList.isEmpty()) {
+            for (Events event : eventsList) {
+            	result.append("\n----------------\n");
+                result.append("Nome do Evento: ").append(event.getEventName()).append("\n");
+                result.append("Tipo: ").append(event.getType()).append("\n");
+                result.append("Categoria: ").append(event.getCategory()).append("\n");
+                result.append("Descrição: ").append(event.getDescription()).append("\n");
+                result.append("Endereço: ").append(event.getAddress()).append("\n");
+                result.append("Tema: ").append(event.getTheme()).append("\n");
+            }
+        } else {
+            result.append("Não há eventos cadastrados.\n");
+        }
+
+        return result.toString();
     }
+
 
  // No método EventController.updateEvent
     public void updateEvent(String nome, String novoNome, String novoTipo, String novaCategoria, String novaDescricao, String novoEndereco, String novoTema) {
