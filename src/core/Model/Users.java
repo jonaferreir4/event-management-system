@@ -13,6 +13,7 @@ public class Users {
 	private Nivel nivel;
 	// como organizador
 	private ArrayList<Events> myEvents = new ArrayList<Events>();
+	private ArrayList<Activity> myActivities = new ArrayList<Activity>();
 	// como participante
 	private ArrayList<Events> registeredEvents;
 	private ArrayList<Activity> registeredActivities;
@@ -48,6 +49,27 @@ public class Users {
 	public void addMyEvent(Events event) {
 		if (event != null) {
 			myEvents.add(event);
+		}
+	}
+	
+	public String getMyActivities(){
+		 StringBuilder activitiesInfo = new StringBuilder();
+
+		    for (Activity activity : myActivities) {
+		    	activitiesInfo.append(activity.toString()).append("\n");
+		    }
+
+		    if (myEvents.isEmpty()) {
+		    	activitiesInfo.append("Nenhuma atividade encontrada.");
+		    }
+
+		    return activitiesInfo.toString();
+
+	}
+	
+	public void addMyActivity(Activity activity) {
+		if (activity != null) {
+			myActivities.add(activity);
 		}
 	}
 	public void registerInEvents(Events event) {

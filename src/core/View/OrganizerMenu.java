@@ -4,23 +4,32 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import core.Controller.EventController;
+import core.Controller.UserController;
 import core.Model.*;
 import java.util.Scanner;
 
 public class OrganizerMenu {
 	private Users user;
+	private Events event;
+	private UserController userController;
+	private EventController eventController;
 
 	public OrganizerMenu() {
 		
 	}
 	
-	public OrganizerMenu(Users user) {
-		this.user = user;	
+	public OrganizerMenu(Users user, Events event,UserController userController ,EventController eventController) {
+		this.user = user;
+		this.event = event;
+		this.userController = userController;
+		this.eventController = eventController;
+		
 	}
 	
 	public void organizerMenu() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Menu do participante: ");
+		System.out.println("Menu do Organizador: ");
 		System.out.println("1 - criar atividades");
 		System.out.println("2 - atualizar eventos");
 		System.out.println("3 - atualizar atividades");
@@ -96,6 +105,8 @@ public class OrganizerMenu {
 	    LocalDateTime duration = date.plusMinutes(durationInMinutes);
 		
 		Activity activity = new Activity(id, name, theme, type, description, Localization, speaker, date, duration);
+		event.addActivity(activity);
+		user.addMyActivity(activity);
 		System.out.println("Atividade criada com sucesso!");
 	}
 	

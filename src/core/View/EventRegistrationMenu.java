@@ -47,10 +47,10 @@ public class EventRegistrationMenu {
 	        System.out.print("tema do evento: ");
 	        String theme = scanner.nextLine();
 	        
-	        eventController.createEvent(eventID, eventName,loggedInUser, type, category, description, address, theme);
+	        Events event = eventController.createEvent(eventID, eventName,loggedInUser, type, category, description, address, theme);
 	        
 	        System.out.println("Evento criado com sucesso: " + eventName);
-	        OrganizerMenu menu = new OrganizerMenu(loggedInUser);
+	        OrganizerMenu menu = new OrganizerMenu(loggedInUser, event, userController, eventController);
 	        menu.organizerMenu();
 	        
 	        

@@ -27,11 +27,11 @@ public class Activity {
 	public Activity(String activityID, String activityName, String theme, String type, String description,
 			String localization, String speaker, LocalDateTime dateActivity, LocalDateTime duration) {
 		this.activityID = activityID;
-		ActivityName = activityName;
+		this.ActivityName = activityName;
 		this.theme = theme;
 		this.type = type;
 		this.description = description;
-		Localization = localization;
+		this.Localization = localization;
 		this.speaker = speaker;
 		this.dateActivity = dateActivity;
 		this.duration = duration;

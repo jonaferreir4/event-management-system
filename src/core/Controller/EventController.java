@@ -43,14 +43,16 @@ public class EventController {
         return user.getNivel().equals(Nivel.PARTICIPANT);
     }
     
-	    public void createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
+	    public Events createEvent(String eventID, String eventName, Users creator, String type, String category, String description, String address, String theme) {
 	        if (hasUserPermission()) {
 	            Events newEvent = new Events(eventID, eventName, creator, type, category, description, address, theme);
 	            creator.setNivel(Nivel.ORGANIZER);
 	            eventsList.add(newEvent);
 	            user.addMyEvent(newEvent);
+	            return newEvent;
 	        } else {
 	            System.out.println("Você não tem permissão para criar eventos.");
+	            return null;
 	        }
 	    }
 
