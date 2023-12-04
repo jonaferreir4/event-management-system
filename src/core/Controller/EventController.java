@@ -92,8 +92,6 @@ public class EventController {
         return result.toString();
     }
 
-
- // No método EventController.updateEvent
     public void updateEvent(String nome, String novoNome, String novoTipo, String novaCategoria, String novaDescricao, String novoEndereco, String novoTema, String newDateStartEvent, String newDateEndEvent) {
         if (hasOrganizerPermission()) {
             Events event = searchEventByName(nome);
