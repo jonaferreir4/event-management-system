@@ -28,7 +28,7 @@ public class Events {
 		
 	}
 	
-	public Events(String eventname,Users creator,String type, String category, String description, String address, String theme ) {
+	public Events(String eventname,Users creator,String type, String category, String description, String address, String theme, LocalDateTime dateStartEvent, LocalDateTime dateEndEvent ) {
 		this.eventID = generateEventID();
 		this.eventName = eventname;
 		this.creator = creator;
@@ -37,6 +37,8 @@ public class Events {
 		this.description = description;
 		this.address = address;
 		this.theme = theme;
+		this.dateStartEvent = dateStartEvent;
+		this.dateEndEvent = dateEndEvent;
 		
 	}
 	
@@ -142,18 +144,14 @@ public class Events {
 	}
 
 	
-	public void setDateStartEvent(String dateStartEventStr){
-		if (dateEndEvent != null) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-	        LocalDateTime dateStartEvent = LocalDateTime.parse(dateStartEventStr, formatter);
+	public void setDateStartEvent(LocalDateTime dateStartEvent){
+		if (dateStartEvent != null) {
 		this.dateStartEvent = dateStartEvent;
 		}
 	}
 	
-	public void setDateEndEvent(String dateEndEventStr){
-		if (dateEndEvent != null) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-	        LocalDateTime dateEndEvent = LocalDateTime.parse(dateEndEventStr, formatter);
+	public void setDateEndEvent(LocalDateTime dateEndEvent){
+		if (dateEndEvent != null) {			
 		this.dateEndEvent = dateEndEvent;
 		}
 	}

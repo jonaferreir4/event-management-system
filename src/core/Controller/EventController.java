@@ -1,5 +1,7 @@
 package core.Controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import core.Utils.Date;
@@ -44,9 +46,9 @@ public class EventController {
     }
     
     
-	public Events createEvent( String eventName, Users creator, String type, String category, String description, String address, String theme) {
+	public Events createEvent( String eventName, Users creator, String type, String category, String description, String address, String theme, LocalDateTime dateStartEvent, LocalDateTime dateEndEvent ) {
 	        if (hasUserPermission()) {
-	            Events newEvent = new Events( eventName, creator, type, category, description, address, theme);
+	            Events newEvent = new Events( eventName, creator, type, category, description, address, theme, dateStartEvent, dateEndEvent);
 	            creator.setNivel(Nivel.ORGANIZER);
 	            eventsList.add(newEvent);
 	            user.addMyEvent(newEvent);
@@ -80,6 +82,8 @@ public class EventController {
                 result.append("Descrição: ").append(event.getDescription()).append("\n");
                 result.append("Endereço: ").append(event.getAddress()).append("\n");
                 result.append("Tema: ").append(event.getTheme()).append("\n");
+                result.append("Data e hora do início do evento: ").append(event.getDateStartEvent()).append("\n");
+                result.append("Data e hora do término do evento: ").append(event.getDateEndEvent()).append("\n");
             }
         } else {
             result.append("Não há eventos cadastrados.\n");
@@ -90,7 +94,7 @@ public class EventController {
 
 
  // No método EventController.updateEvent
-    public void updateEvent(String nome, String novoNome, String novoTipo, String novaCategoria, String novaDescricao, String novoEndereco, String novoTema) {
+    public void updateEvent(String nome, String novoNome, String novoTipo, String novaCategoria, String novaDescricao, String novoEndereco, String novoTema, String newDateStartEvent, String newDateEndEvent) {
         if (hasOrganizerPermission()) {
             Events event = searchEventByName(nome);
             if (event != null) {
@@ -112,7 +116,15 @@ public class EventController {
                 }
                 if (novoTema != null) {
                     event.setTheme(novoTema);
-                }        
+                }
+                if (newDateStartEvent != null) {
+                	 LocalDateTime dateStart = LocalDateTime.parse(newDateStartEvent, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    event.setDateStartEvent(dateStart);
+                }
+                if (newDateEndEvent != null) {
+                	LocalDateTime dateEnd = LocalDateTime.parse(newDateEndEvent, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    event.setDateEndEvent(dateEnd);
+                }
             } 
         } else {
             System.out.println("Você não tem permissão para atualizar eventos.");

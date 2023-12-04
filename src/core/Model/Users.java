@@ -47,6 +47,10 @@ public class Users {
 
 	}
 	
+	public void removeMyEvent(Events event) {
+        myEvents.remove(event);
+    }
+	
 	public void addMyEvent(Events event) {
 		if (event != null) {
 			myEvents.add(event);

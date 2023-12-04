@@ -4,6 +4,8 @@ package core.View;
 import core.Model.*;
 import core.Controller.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
@@ -34,7 +36,8 @@ public class UserMenu {
 	            System.out.println("4 - Inscrever-se em um Evento");
 	            System.out.println("5 - Busca de Eventos");
 	            System.out.println("6 - Meus eventos");
-	            System.out.println("7 - Voltar ao Menu Principal");
+	            System.out.println("7 - Menu de Atividades");
+	            System.out.println("8 - Voltar ao Menu Principal");
 	            
 	            String input = scanner.nextLine();
 
@@ -66,6 +69,9 @@ public class UserMenu {
 	                    	System.out.println(user.getMyEvents());
 	                    	break;
 	                    case 7:
+	                    	
+	                    	break;
+	                    case 8:
 	                        return;
 	  
 	                    default:
@@ -133,6 +139,12 @@ public class UserMenu {
 
 			        System.out.print("Novo tema: ");
 			        String novoTema = scanner.nextLine();
+			        
+			        System.out.print("Nova data e hora do início do evento (yyyy-MM-dd HH:mm): ");
+			        String newDateStartEvent = scanner.nextLine();			
+			        
+			        System.out.print("Nova data e hora do término do evento (yyyy-MM-dd HH:mm): ");
+			        String newDateEndEvent = scanner.nextLine();			        
 
 			        eventController.updateEvent(
 			            nomeEvento,
@@ -141,7 +153,9 @@ public class UserMenu {
 			            (novaCategoria.isEmpty() ? null : novaCategoria),
 			            (novaDescricao.isEmpty() ? null : novaDescricao),
 			            (novoEndereco.isEmpty() ? null : novoEndereco),
-			            (novoTema.isEmpty() ? null : novoTema)
+			            (novoTema.isEmpty() ? null : novoTema),
+			            (newDateStartEvent.isEmpty() ? null : newDateStartEvent),
+			            (newDateEndEvent.isEmpty() ? null : newDateEndEvent)
 			        );
 
 			        System.out.println("Evento atualizado com sucesso!");
@@ -160,6 +174,7 @@ public class UserMenu {
 			    Events evento = eventController.searchEventByName(nomeEvento);
 
 			    if (evento != null) {
+			    	user.removeMyEvent(evento);
 			        eventController.deleteEvent(nomeEvento);
 			        System.out.println("Evento deletado com sucesso!");
 			    } else {

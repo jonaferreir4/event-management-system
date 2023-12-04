@@ -79,10 +79,10 @@ public class ActivityMenu {
 		String Localization = scanner.nextLine();
 		System.out.println("palestrante/facilitador da atividade: ");
 		String speaker = scanner.nextLine();
-		System.out.print("Data da atividade (yyyy-MM-dd HH:mm): ");
+		System.out.print("Data e hora da atividade (yyyy-MM-dd HH:mm): ");
 		String dateString = scanner.nextLine();
 	    LocalDateTime date = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-		System.out.println("duração da atividade: ");
+		System.out.println("Duração em minutos da atividade: ");
 		long durationInMinutes = scanner.nextLong();
 	    LocalDateTime duration = date.plusMinutes(durationInMinutes);
 		
