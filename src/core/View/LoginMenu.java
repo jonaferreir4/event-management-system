@@ -21,20 +21,20 @@ public class LoginMenu {
 	
 	public void loginMenu() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Digite seu nome: ");
-		String name = scanner.nextLine();
+		System.out.println("Digite seu email: ");
+		String email = scanner.nextLine();
 		System.out.println("digite sua senha: ");
 		String password = scanner.nextLine();
 	
-		login(name, password);
+		login(email, password);
 	}
 	
-	public void login(String name, String password) {	
+	public void login(String email, String password) {	
 			
 		
 		
-		 if (name != null && password != null) {
-	            Users logged = userController.authenticateUser(name, password);
+		 if (email != null && password != null) {
+	            Users logged = userController.authenticateUser(email, password);
 
 	            if (logged != null) {
 	                System.out.println("Bem vindo de volta, " + logged.getName());
@@ -42,7 +42,7 @@ public class LoginMenu {
 	                userMenu.setUser(logged);
 	                userMenu.userMenu();
 	            } else {
-	                System.out.println("Usuário não encontrado! Verifique nome e senha.");
+	                System.out.println("Usuário não encontrado! Verifique seu email e sua senha.");
 	            }
 		 }
 	}

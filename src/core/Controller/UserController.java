@@ -12,9 +12,9 @@ public class UserController {
 		 userList = new ArrayList<Users>(); // Inicialize a lista de usuários, se necessário
 	}
 	
-	public Users authenticateUser(String username, String password) {
+	public Users authenticateUser(String userEmail, String password) {
         for (Users user : userList) {
-            if (user.getName().equals(username) && user.getPassword().equals(password)) {
+            if (user.getEmail().equals(userEmail) && user.getPassword().equals(password)) {
                 return user; // Retorna o usuário autenticado.
             }
         }
@@ -45,7 +45,7 @@ public class UserController {
    	 return userList;
    }
   // Esse servirá pra atualizar dados usuário
-   public void upDateUser(String nome, String password) {
+   public void updateUser(String nome, String password) {
    	// atualizar usuário
    }
    

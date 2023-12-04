@@ -13,6 +13,7 @@ public class UserMenu {
 	private EventController eventController;
 	private UserController userController;
 	private Users user;
+	 private ActivityMenu activityMenu;
 	public UserMenu() {
 		
 	}
@@ -21,6 +22,7 @@ public class UserMenu {
 		this.userController = userController;
 		this.eventController = eventController;
 		this.user = user;
+		this.activityMenu = new ActivityMenu(user, null, userController, eventController);
 		
 	}
 	
@@ -69,7 +71,7 @@ public class UserMenu {
 	                    	System.out.println(user.getMyEvents());
 	                    	break;
 	                    case 7:
-	                    	
+	                    	activityMenu.activityMenu();
 	                    	break;
 	                    case 8:
 	                        return;
